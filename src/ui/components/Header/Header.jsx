@@ -1,23 +1,30 @@
-import logo from "../../../assets/header/logo.svg";
-import login from "../../../assets/header/login.svg";
-import bag from "../../../assets/header/bag.svg";
-import searchIcon from "../../../assets/header/search-icon.svg";
+import logo from "../../../assets/img/logo.svg";
+import login from "../../../assets/img/login.svg";
+import bag from "../../../assets/img/bag.svg";
+import searchIcon from "../../../assets/img/search-icon.svg";
 
 import HeaderStyled from "./Header.styled";
+import { Link } from "react-router-dom";
+import InputMain from "../InputMain/InputMain";
+
 
 const Header = () => {
     return (
         <>
             <HeaderStyled>
-                <img className="logo" src={logo} alt="logo" />
+                <Link to={"/"}>
+                    <img className="logo" src={logo} alt="logo" />
+                </Link>
 
                 <div className="enter">
-                    <div className="inputPlace">
+
+                    <InputMain>
                         <div>
                             <img src={searchIcon} alt="search icon" />
                         </div>
                         <input type="text" />
-                    </div>
+                    </InputMain>
+
                     <img className="login" src={login} alt="login-logo" />
                     <div className="bag">
                         <div className="itens">

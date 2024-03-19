@@ -7,6 +7,7 @@ const HeaderStyled = styled.header`
     align-items: center;
     justify-content: space-around;
     height: 7.0rem;
+    border-bottom: 1px solid ${({ theme }) => theme.color.normal};
     * {
         display: flex;
      }
@@ -32,32 +33,5 @@ const HeaderStyled = styled.header`
 
         }
     }
-    & .inputPlace{
-        all: unset;
-        background-color: ${({ theme }) => theme.color.third};
-        height: 4.5rem;
-        width: 44.4rem;
-        border-radius: 1.0rem;
-        display: flex;
-        flex-direction: row;
-         div{
-                height: 100%;
-                width: 10%;
-                justify-content: center;
-                align-items: center;
-            img{
-                height: 3.0rem;
-            }
-        }
-        input {
-            all: unset;
-            height: 100%;
-            width: 90%;
-            letter-spacing: 0.1rem;
-            font-size: ${({ theme }) => theme.font.md};
-            color: ${({ theme }) => theme.color.secondary};
-        }
-    }
-
 `;
 export default HeaderStyled;
