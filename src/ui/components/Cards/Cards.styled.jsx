@@ -11,6 +11,7 @@ const CardStyled = styled.li`
     & :nth-child(1){
         height: 50%;
         width: 100%;
+        object-fit: cover;
     }
     &:hover{
         transform: scale(1.01);
@@ -28,6 +29,10 @@ const CardStyled = styled.li`
         } 
         .description{
             font-size: ${({theme}) => theme.font.sm};
+            height: 5.0rem;
+            overflow: hidden;
+            text-overflow: ellipsis; 
+            /* white-space: nowrap; */
         }
         hr{
             border-color: ${({theme}) => theme.color.normal};

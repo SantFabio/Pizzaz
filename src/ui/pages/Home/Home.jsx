@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import pizza_home from "../../../assets/img/pizza-home.svg";
-import { HomeStyled, DivStyled, FirstTextStyled, SecondTextStyled, ButtonStyled } from "./Home.styled";
+import Button from "../../components/Button/Button";
+import { HomeStyled, DivStyled, FirstTextStyled, SecondTextStyled } from "./Home.styled";
+
 
 const Home = () => {
     return (
@@ -12,9 +14,9 @@ const Home = () => {
                         <SecondTextStyled>#Pizzaz</SecondTextStyled>
                     </div>
                     <Link to="/menu">
-                        <ButtonStyled>
+                        <Button size={"large"}>
                             Comprar
-                        </ButtonStyled>
+                        </Button>
                     </Link>
                 </DivStyled>
                 <img src={pizza_home} alt={pizza_home.name} />

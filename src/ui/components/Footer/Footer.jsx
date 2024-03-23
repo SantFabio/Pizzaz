@@ -3,7 +3,7 @@ import instagram from "../../../assets/img/icon-instagram.svg"
 import facebook from "../../../assets/img/icon-facebook.svg"
 import linkedin from "../../../assets/img/icon-linkedin.svg"
 
-import { FooterStyled, Informations, Contact, LogoStyled, SocialMedias, ContentStyled } from "./Footer.styled";
+import { FooterStyled, Informations, Contact, LogoStyled, SocialMedias, ContentStyled, FooterLogo} from "./Footer.styled";
 import NewsLetter from "./components/NewsLetter";
 
 
@@ -28,7 +28,7 @@ const Footer = () => {
                         <p>Sobre nós</p>
                     </Informations>
                     <LogoStyled>
-                        <img src={logo} alt="logo" />
+                        <FooterLogo src={logo} alt="logo" />
                     </LogoStyled>
                     <SocialMedias>
                         <div>

@@ -34,12 +34,12 @@ export const Informations = styled.div`
 `;
 export const LogoStyled = styled.div`
     grid-area: logo;
-     & img{
-        transform: translateX(-50px);
-        width: 50.0rem;
-        /* background-color: antiquewhite; */
-    } 
 `;
+export const FooterLogo = styled.img`
+    transform: translateX(-50px);
+    width: 50.0rem;
+`;
+
 export const SocialMedias = styled.div`
     /* background-color: darkgreen; */
      grid-area: socialmedia;

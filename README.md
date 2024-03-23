@@ -10,10 +10,11 @@ Currently, two official plugins are available:
 tecs
     npm i react-router-dom
     styled-components
+    firebase
 Com certeza, Fábio! Para o seu site de pizzaria, sugiro algumas telas essenciais:
 
-1. **Página Inicial:** Destacando promoções e os principais produtos.
-2. **Cardápio:** Listando categorias, tipos de pizzas e suas descrições.
+1. **Página Inicial:** Destacando promoções e os principais produtos. ✅
+2. **Cardápio:** Listando categorias, tipos de pizzas e suas descrições. ✅
 3. **Detalhes do Produto:** Mostrando ingredientes, tamanhos e opções adicionais.
 4. **Carrinho de Compras:** Onde os clientes podem revisar e editar seus pedidos.
 5. **Autenticação/Cadastro:** Para os clientes se registrarem ou fazerem login.
@@ -24,3 +25,30 @@ Com certeza, Fábio! Para o seu site de pizzaria, sugiro algumas telas essenciai
 10. **Página de Contato:** Informações de contato e formulário para dúvidas.
 
 Estas são sugestões básicas. Lembre-se de adaptar conforme as necessidades específicas da pizzaria fictícia. Se precisar de mais detalhes em alguma área ou tiver outras dúvidas, estou aqui para ajudar!
+uncionalidades Principais:
+
+1. Autenticação e Formulário de Login: a. Implementar um formulário de login com cantos arredondados, utilizando as propriedades em CSS. Adicionar uma sombra sutil aos botões de login para destacá-los.
+
+2. Listagem de Pizzas a. Exibir dinamicamente as opções de pizzas disponíveis, utilizando componentes React para representar cada item do cardápio. Aplicar estilos utilizando Tailwind CSS para garantir uma apresentação moderna e responsiva.
+
+3. Seleção de Pizzas a. Permitir aos usuários selecionar a quantidade desejada de cada pizza, utilizando componentes controlados e estados em React. Se possível, utilizar funções de transformação CSS para animar a interação do usuário durante a seleção.
+
+4. Carrinho de Compras a. Implementar um carrinho de compras dinâmico que exibe as pizzas selecionadas, a quantidade e o total. Utilizar propriedades CSS para controle de transições, proporcionando uma experiência suave ao adicionar ou remover itens do carrinho.
+
+5. Finalização do Pedido a. Permitir aos usuários revisar o pedido, ajustar as quantidades e finalizar a compra. Utilizar o Next.js para otimizar o carregamento da página de confirmação do pedido, aproveitando as vantagens do SSR.
+
+6. Autenticação com Redux a. Introduzir o Redux para gerenciar o estado global da aplicação, incluindo informações sobre o usuário autenticado.
+
+7. Responsividade e Material UI a. Garantir que a aplicação seja totalmente responsiva, utilizando classes do Material UI para componentes específicos. Implementar breakpoints para garantir uma experiência de usuário consistente em diferentes dispositivos.
+
+8. Acessibilidade e Atributos ARIA a. Integrar atributos ARIA para melhorar a acessibilidade da aplicação, tornandoa mais amigável para usuários com deficiência.
+
+9. Controle de Versão com Git a. Configurar um repositório Git para o projeto, garantindo um histórico de alterações e facilitando a colaboração entre os membros da equipe.
+
+10. Docker para Ambiente de Desenvolvimento a. Comentar sobre como poderia configurar um ambiente de desenvolvimento utilizando Docker, garantindo consistência entre as máquinas dos desenvolvedores.
+
+11. Scrum a. Comentar sobre como poderia ser utilizado a metodologia Scrum para o desenvolvimento desse sistema e quais seriam os ganhos para a equipe e para o projeto.
+
+ 
+
+Deixe abaixo o link para o github com seu projeto:
