@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 
 export const PizzaModalStyled = styled.div`
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
     background-color: rgba(192, 59, 81, 0.9);
 
     display: flex;

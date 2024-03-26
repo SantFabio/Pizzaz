@@ -1,10 +1,14 @@
-import CardStyled from "./Cards.styled";
-// import PropTypes from 'prop-types';
 
-const Cards = ({ pizza }) => {
+import CardStyled from "./Cards.styled";
+
+const Cards = ({ pizza, setIsOpen, setPizzaInFocus }) => {
+    const handleClick = () => {
+        setIsOpen(true);
+        setPizzaInFocus(pizza);
+    }
     return (
         <>
-            <CardStyled  >
+            <CardStyled onClick={handleClick}>
                 <img src={pizza.image} alt={pizza.nome} />
                 <div className="pizza-data">
                     <h1>{pizza.nome}</h1>

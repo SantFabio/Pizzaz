@@ -1,17 +1,18 @@
 
 import Cards from "../../components/Cards/Cards";
-import { HrStyled, MenuStyled, UlStyled } from "./Menu.styled";
+import {
+    HrStyled,
+    MenuStyled,
+    UlStyled
+} from "./Menu.styled";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import db from "../../../data/service/firebase"
-import { useEffect, useState } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
-const Menu = () => {
-    const [pizzas, setPizzas] = useState([]);
-    useEffect(()=>{
-        onSnapshot(collection(db,"pizzas"), (snapshot) =>
-            setPizzas(snapshot.docs.map( doc =>( {...doc.data(), id: doc.id})))
-        );
-    },[]);
+import { useState } from "react";
+import PizzaModal from "../../components/PizzaModal/PizzaModal";
+
+const Menu = ({ pizzas }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [pizzaInFocus, setPizzaInFocus] = useState(null);
+
     return (
         <>
             <MenuStyled>
@@ -20,10 +21,24 @@ const Menu = () => {
                     <HrStyled />
                     <UlStyled>
                         {pizzas.map(
-                            (pizza) => (<Cards pizza={pizza} key={pizza.id}></Cards>)
+                            (pizza) => (
+                                <Cards
+                                    pizza={pizza}
+                                    key={pizza.id}
+                                    setIsOpen={setIsOpen}
+                                    setPizzaInFocus={setPizzaInFocus}
+                                >
+                                </Cards>
+                            )
                         )}
                     </UlStyled>
                 </div>
+                {
+                    isOpen ? <PizzaModal 
+                    pizzaInFocus={pizzaInFocus}
+                    setIsOpen={setIsOpen}
+                    /> : null
+                }
             </MenuStyled>
         </>
     )

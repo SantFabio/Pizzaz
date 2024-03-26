@@ -7,10 +7,9 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         font-family: ${({ theme }) => theme.font.fontFamily.inter};
         list-style-type: none;
+        text-decoration: none;
     }
-    body{
-        /* background-color: #92c2f8; */
-    }
+
     :root{
         font-size:  62.5%; //0.1rem = 1px;
     }
