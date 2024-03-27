@@ -22,6 +22,21 @@ export const PizzaContainer = styled.div`
     overflow: hidden;
     display: flex;
     flex-direction: row;
+    transform: translateY(10%); 
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease; 
+    animation: slideUp 0.5s ease forwards; 
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(10%);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 `;
 
 export const ImgStyled = styled.img`
