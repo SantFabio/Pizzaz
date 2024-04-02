@@ -13,12 +13,13 @@ export const ImgItem = styled.img`
     margin-left: 0;
 `;
 export const PriceItem = styled.span`
-    font-size: ${({ theme }) => theme.font.sm};
+    font-size: ${({ theme }) => theme.font.md};
+    font-weight: bold;
     margin-right: 1.2rem;
 `;
 export const PriceAndCheckBox = styled.div`
     display: flex;
-    align-items: center;
+    align-self: end;
 `;
 
 // export const ButtonContainer = styled.div`

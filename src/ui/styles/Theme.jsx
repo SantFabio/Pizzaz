@@ -8,7 +8,7 @@ const theme = {
         hover: "#E5E5E5",
         shadowColor: "#00000019",
         warning: "#F9AE00",
-        black: "#000000",
+        black: "#3E3E3E",
     },
     font: {
         xs: "1.0rem",

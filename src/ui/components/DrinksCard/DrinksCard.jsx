@@ -1,3 +1,4 @@
+
 import Checkbox from "../Checkbox/Checkbox";
 import {
   LiStyled,
@@ -9,10 +10,13 @@ import {
 const DrinksCard = ({ drink }) => {
   return (
     <LiStyled>
-      <ImgItem src={drink.image} alt={drink.name} />
+      <div>
+        <ImgItem src={drink.image} alt={drink.nome} />
+        <span>{drink.nome}</span>
+      </div>
       <PriceAndCheckBox>
-        <PriceItem>{drink.preco},99</PriceItem>
-        <Checkbox id={drink.id} />
+        <PriceItem>{drink.preco},00</PriceItem>
+        <Checkbox drink={drink} />
       </PriceAndCheckBox>
       {/* <ButtonContainer>
                 <CounterButton>-</CounterButton>

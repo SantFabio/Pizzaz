@@ -8,8 +8,11 @@ const GlobalStyles = createGlobalStyle`
         font-family: ${({ theme }) => theme.font.fontFamily.inter};
         list-style-type: none;
         text-decoration: none;
+        user-select: none;
     }
-
+    body{
+        padding-top: 7.0rem;
+    }
     :root{
         font-size:  62.5%; //0.1rem = 1px;
     }

@@ -21,18 +21,20 @@ export const DivStyled = styled.div`
     /* background-color: aqua; */
     justify-content: space-around;
     `;
+export const LogoText = styled.div`
+    width: 50%;
+`;
 export const FirstTextStyled = styled.p`
     font-weight: 400;
     font-size: 2.5rem;
     margin-bottom: -4.5rem;
-    text-align: end;
     font-style: italic;
     color: ${({ theme }) => theme.color.secondary};
     `;
 export const SecondTextStyled = styled.p`
     color: ${({ theme }) => theme.color.warning};
     font-family: ${({ theme }) => theme.font.fontFamily.shrikhand};
-    font-size: 15.0rem;
+    font-size: 5.0rem;
 `;
 
 

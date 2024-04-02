@@ -1,15 +1,29 @@
 
+import { useState } from 'react';
 import { 
-    SideNavContainer, 
+  SideNavDivContainer,
+  SideNav,
+  SpanStyled,
 } from "./OrderSidebar.styled"
 
-const OrderSidebar = () => {
+const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = (event) => {
+    const outContainer = event.target.id;
+    if (outContainer === "outContainer") {
+      setIsOpen(!isOpen);
+    }
+  };
 
   return (
-    <SideNavContainer>
-
-    </SideNavContainer>
+    <SideNavDivContainer id='outContainer' onClick={toggleSidebar}>
+      <SideNav isOpen={isOpen}>
+        
+      </SideNav>
+      <SpanStyled onClick={toggleSidebar}>X</SpanStyled>
+    </SideNavDivContainer>
   );
 };
-export default OrderSidebar;
 
+export default Sidebar;

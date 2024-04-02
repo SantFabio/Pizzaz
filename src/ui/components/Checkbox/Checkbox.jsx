@@ -1,15 +1,24 @@
+import { CheckboxWrapper, TglBtn } from "./Checkbox.styled";
+import { useState } from "react";
 
-import { CheckboxWrapper, TglBtn } from './Checkbox.styled';
+const Checkbox = ({ drink }) => {
+  const [selecionado, setSelecionado] = useState(drink.selecionado);
 
-const Checkbox = ({ id }) => {
+  const handleSelectItem = () => {
+    setSelecionado(!selecionado);
+    drink.selecionado = !selecionado;
+  };
+
   return (
     <CheckboxWrapper className="checkbox-wrapper-10">
       <input
         type="checkbox"
-        id="oi"
+        checked={selecionado}
+        onChange={handleSelectItem} 
+        id={drink.id}
         className="tgl tgl-flip"
       />
-      <TglBtn htmlFor="oi" className="tgl-btn" data-tg-on="Yeah!" data-tg-off="Nope" />
+      <TglBtn htmlFor={drink.id} className="tgl-btn" data-tg-on="Sim!" data-tg-off="Não" />
     </CheckboxWrapper>
   );
 };

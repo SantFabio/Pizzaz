@@ -35,9 +35,10 @@ export const CheckboxWrapper = styled.div`
   .tgl + .tgl-btn {
     outline: 0;
     display: block;
-    width: 4em;
-    height: 2em;
+    width: 5em;
+    height: 3em;
     position: relative;
+    font-size: 1.5em;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -80,7 +81,7 @@ export const CheckboxWrapper = styled.div`
     width: 100%;
     text-align: center;
     position: absolute;
-    line-height: 2em;
+    line-height: 3em;
     font-weight: bold;
     color: #fff;
     position: absolute;

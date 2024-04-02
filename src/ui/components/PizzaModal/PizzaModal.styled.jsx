@@ -8,6 +8,7 @@ export const PizzaModalStyled = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1000;
     background-color: rgba(192, 59, 81, 0.9);
 
     display: flex;

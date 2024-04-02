@@ -16,7 +16,7 @@ export const UlStyled = styled.ul`
     max-width: 104.0rem; 
     width: 100%; 
     list-style-type: none; 
-    margin: 7.0rem 0 7.0rem 0;
+    margin: 2.0rem 0 7.0rem 0;
 `
 export const HrStyled = styled.hr`
     border-color: ${({ theme }) => theme.color.normal};

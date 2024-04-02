@@ -14,16 +14,20 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/img/logo.svg";
 import login from "../../../assets/img/login.svg";
 import bag from "../../../assets/img/bag.svg";
+import { useSelector } from "react-redux";
 // import searchIcon from "../../../assets/img/search-icon.svg";
 // import OrderSidebar from "../OrderSidebar/OrderSidebar";
 
 const Header = ({ isOpenSideNavMenu, setIsOpenSideNavMenu }) => {
+  const orderState = useSelector((state) => {
+    return state;
+  });
   const handleOpenSideNavMenu = () => {
     setIsOpenSideNavMenu(!isOpenSideNavMenu);
   };
   return (
     <>
-      <HeaderStyled>
+      <HeaderStyled >
         <Link to={"/"}>
           <LogoImg src={logo} alt="logo" />
         </Link>
@@ -35,8 +39,7 @@ const Header = ({ isOpenSideNavMenu, setIsOpenSideNavMenu }) => {
           <input type="text" />
         </InputMain> */}
 
-        <EnterContainer>
-
+        <EnterContainer >
           <LoginImg src={login} alt="login-logo" />
           <BagContainer onClick={handleOpenSideNavMenu}>
             <BagItems>
@@ -45,7 +48,6 @@ const Header = ({ isOpenSideNavMenu, setIsOpenSideNavMenu }) => {
             </BagItems>
             <BagImg src={bag} alt="bag" />
           </BagContainer>
-
         </EnterContainer>
       </HeaderStyled>
       {/* <OrderSidebar></OrderSidebar> */}

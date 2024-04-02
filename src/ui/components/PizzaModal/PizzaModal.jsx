@@ -1,5 +1,4 @@
 import DrinksCards from "../DrinksCard/DrinksCard";
-import Button from "../Button/Button";
 import {
   PizzaModalStyled,
   PizzaContainer,
@@ -12,11 +11,15 @@ import {
 } from "./PizzaModal.styled";
 import { useEffect, useState } from "react";
 import getDrinks from "../../../data/service/drinksService";
+import { addItem } from "../../../data/actions/orderActions";
+import { useDispatch } from "react-redux";
 
 const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
   const [drinks, setDrinks] = useState([]);
-  console.log(drinks);
-  useEffect(() =>{
+  const dispatch = useDispatch();
+ 
+  
+  useEffect(() => {
     const unsubscribe = getDrinks(setDrinks);
     return () => unsubscribe();
   }, []);
@@ -26,6 +29,15 @@ const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
       setIsOpen(false);
     }
   };
+  const addItemToBag = () => {
+    const selectedDrinksIDs = drinks
+    .filter((item) => item.selecionado == true)
+    .map(item => item.id);
+    const selectedPizzaID = pizzaInFocus.id;
+    dispatch(addItem(selectedPizzaID, selectedDrinksIDs));
+    setIsOpen(false);
+  };
+
   return (
     <>
       <PizzaModalStyled id="modal" onClick={handleCloseModal}>
@@ -41,7 +53,8 @@ const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
                 ))}
               </UlStyled>
             </PizzaInformation>
-            <Button>Pedir</Button>
+            <button onClick={addItemToBag}>Adicionar</button>
+            <span>*escolha a quantidade no carrinho</span>
           </OrderStyled>
         </PizzaContainer>
       </PizzaModalStyled>

@@ -8,9 +8,11 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 tecs
-    npm i react-router-dom
-    styled-components
-    firebase
+    Router
+    Styled-components
+    Firebase
+    Redux 
+    React-redux
 Com certeza, Fábio! Para o seu site de pizzaria, sugiro algumas telas essenciais:
 
 1. **Página Inicial:** Destacando promoções e os principais produtos. ✅
