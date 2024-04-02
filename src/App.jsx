@@ -11,6 +11,7 @@ import OrderSidebar from "./ui/components/OrderSidebar/OrderSidebar";
 
 function App() {
   const [pizzas, setPizzas] = useState([]);
+  const [isOpen, setIsOpen] = useState(false); //isOpen do carrinho
   useEffect(() => {
     const unsubscribe = getPizzas(setPizzas);
     // Limpar a inscrição quando o componente for desmontado
@@ -20,12 +21,12 @@ function App() {
   return (
     <>
       <Router>
-        <Header />
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <Routes>
           <Route path="/menu/" exact element={<Menu pizzas={pizzas}/>} />
           <Route path="/*" exact element={<Home />} />c
         </Routes>
-        <OrderSidebar />
+        <OrderSidebar isOpen={isOpen} setIsOpen={setIsOpen} />
         <Footer />
       </Router>
     </>

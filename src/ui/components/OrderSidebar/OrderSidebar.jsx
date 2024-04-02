@@ -1,27 +1,35 @@
-
-import { useState } from 'react';
-import { 
+import {
   SideNavDivContainer,
   SideNav,
   SpanStyled,
-} from "./OrderSidebar.styled"
+} from "./OrderSidebar.styled";
+import EmptyBag from "../EmptyBag/EmptyBag";
+import { useSelector } from "react-redux";
+import FullBag from "../FullBag/FullBag";
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const CLOSE = "close";
+const Sidebar = ({ isOpen, setIsOpen }) => {
+  const bagState = useSelector((state) => state);
 
   const toggleSidebar = (event) => {
-    const outContainer = event.target.id;
-    if (outContainer === "outContainer") {
+    const closeContainer = event.target.className;
+    if (closeContainer.includes(CLOSE)) {
       setIsOpen(!isOpen);
     }
   };
 
   return (
-    <SideNavDivContainer id='outContainer' onClick={toggleSidebar}>
+    <SideNavDivContainer
+      isOpen={isOpen}
+      className={CLOSE}
+      onClick={toggleSidebar}
+    >
       <SideNav isOpen={isOpen}>
-        
+        <SpanStyled className={CLOSE} onClick={toggleSidebar}>
+          X
+        </SpanStyled>
+        {bagState ? <FullBag bagState={bagState} /> : <EmptyBag isOpen={isOpen} />}
       </SideNav>
-      <SpanStyled onClick={toggleSidebar}>X</SpanStyled>
     </SideNavDivContainer>
   );
 };

@@ -17,17 +17,23 @@ import bag from "../../../assets/img/bag.svg";
 import { useSelector } from "react-redux";
 // import searchIcon from "../../../assets/img/search-icon.svg";
 // import OrderSidebar from "../OrderSidebar/OrderSidebar";
-
-const Header = ({ isOpenSideNavMenu, setIsOpenSideNavMenu }) => {
+const Header = ({ isOpen, setIsOpen }) => {
   const orderState = useSelector((state) => {
     return state;
   });
-  const handleOpenSideNavMenu = () => {
-    setIsOpenSideNavMenu(!isOpenSideNavMenu);
+  const totalPrice =
+    orderState.length > 0
+      ? orderState
+          .map((item) => item.precoUnitario)
+          .reduce((accumulator, currentValue) => accumulator + currentValue)
+      : 0;
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
   };
+
   return (
     <>
-      <HeaderStyled >
+      <HeaderStyled>
         <Link to={"/"}>
           <LogoImg src={logo} alt="logo" />
         </Link>
@@ -39,18 +45,20 @@ const Header = ({ isOpenSideNavMenu, setIsOpenSideNavMenu }) => {
           <input type="text" />
         </InputMain> */}
 
-        <EnterContainer >
+        <EnterContainer>
           <LoginImg src={login} alt="login-logo" />
-          <BagContainer onClick={handleOpenSideNavMenu}>
+          <BagContainer onClick={toggleSidebar}>
             <BagItems>
-              <span>R$ 0,00</span>
-              <span>0 itens</span>
+              <span>
+                R$ {totalPrice}
+                ,00
+              </span>
+              <span>{orderState ? orderState.length : 0} itens</span>
             </BagItems>
             <BagImg src={bag} alt="bag" />
           </BagContainer>
         </EnterContainer>
       </HeaderStyled>
-      {/* <OrderSidebar></OrderSidebar> */}
     </>
   );
 };

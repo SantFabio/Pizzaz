@@ -37,6 +37,7 @@ export const BagContainer = styled.div`
   width: 14rem;
   border-radius: 2.3rem;
   margin-left: 1.0rem;
+  transition: background-color 0.2s ease;
   &:hover {
     background-color: ${({ theme }) => theme.color.third};
   }

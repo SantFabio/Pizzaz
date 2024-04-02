@@ -6,7 +6,11 @@ const initialState = [];
 const orderReducer = (state = initialState, action) => {
   switch (action.type) {
     case TodoConstants.ADD_ITEM:
-      return [...state, action.payload];
+      if (state) {
+        return [...state, ...action.payload];
+      }else{
+        return [...state, action.payload];
+      }
     default:
       return state;
   }

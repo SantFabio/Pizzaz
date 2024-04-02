@@ -30,11 +30,10 @@ const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
     }
   };
   const addItemToBag = () => {
-    const selectedDrinksIDs = drinks
+    const selectedDrinks = drinks
     .filter((item) => item.selecionado == true)
-    .map(item => item.id);
-    const selectedPizzaID = pizzaInFocus.id;
-    dispatch(addItem(selectedPizzaID, selectedDrinksIDs));
+    const selectedPizza = pizzaInFocus;
+    dispatch(addItem(selectedPizza, selectedDrinks));
     setIsOpen(false);
   };
 
