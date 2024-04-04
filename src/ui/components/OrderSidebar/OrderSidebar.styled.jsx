@@ -17,7 +17,7 @@ export const SideNav = styled.div`
   height: 100%;
   z-index: 1;
   top: 0;
-  background-color: #2146ed;
+  background-color: ${({theme}) => (theme.color.secondary)};
   transition: ease 0.5s;
   display: flex;
   justify-content: center;

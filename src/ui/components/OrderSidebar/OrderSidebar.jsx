@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import FullBag from "../FullBag/FullBag";
 
 const CLOSE = "close";
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
   const bagState = useSelector((state) => state);
 
   const toggleSidebar = (event) => {
@@ -28,7 +28,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <SpanStyled className={CLOSE} onClick={toggleSidebar}>
           X
         </SpanStyled>
-        {bagState ? <FullBag bagState={bagState} /> : <EmptyBag isOpen={isOpen} />}
+        {bagState.length ? <FullBag pizzas={pizzas} setPizzas={setPizzas} bagState={bagState} /> : <EmptyBag isOpen={isOpen} />}
       </SideNav>
     </SideNavDivContainer>
   );

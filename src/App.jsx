@@ -26,7 +26,7 @@ function App() {
           <Route path="/menu/" exact element={<Menu pizzas={pizzas}/>} />
           <Route path="/*" exact element={<Home />} />c
         </Routes>
-        <OrderSidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+        <OrderSidebar pizzas={pizzas} setPizzas={setPizzas} isOpen={isOpen} setIsOpen={setIsOpen} />
         <Footer />
       </Router>
     </>

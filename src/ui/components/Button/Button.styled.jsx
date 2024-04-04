@@ -1,59 +1,71 @@
 import styled from "styled-components";
 
-export const ButtonStyled = styled.button`
-    position: relative;
-    font-size: ${({ theme }) => theme.font.xl};
-    background-color: ${({ theme }) => theme.color.warning};
-    text-decoration: none;
-    border: none;
-    border-radius: 0.5em;
-    cursor: pointer;
-    transition: box-shadow 0.3s, transform 0.3s;
+export const ButtonStyles = styled.button`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.secondary};
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  width: ${(props) => props.width || "auto"};
+  height: ${(props) => props.height || "auto"};
 
-    ${({ size }) => {
-      switch (size) {
-        case 'small':
-          return `
-            width: 15.0rem;
-            height: 5.0rem;
-            font-size: ${({ theme }) => theme.font.md};
-          `;
-        case 'large':
-          return `
-            width: 25.0rem;
-            height: 7.0rem;
-            font-size: ${({ theme }) => theme.font.xl};
-          `;
-        default:
-          return `
-            width: 12rem;
-            height: 4rem;
-            font-size: ${({ theme }) => theme.font.lg};
-          `;
-      }
-    }}
-
-  &::before {
+  &:after {
+    content: " ${(props) => props.children} ";
+    width: 0%;
+    height: 100%;
+    background: ${({ theme }) => theme.color.warning};
+    color: ${({ theme }) => theme.color.primary};
+    font-weight: bold;
     position: absolute;
-    content: '';
-    height: 0;
-    width: 0;
-    top: 0;
+    transition: all 0.4s ease-in-out;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  &:hover::after {
+    right: auto;
     left: 0;
-    background: linear-gradient(135deg, #bd0303 0%, rgba(33,33,33,1) 50%, rgba(150,4,31,1) 50%, rgba(191,4,38,1) 60%);
-    border-radius: 0 0 0.5em 0;
-    box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
+    width: 100%;
   }
 
-  &:hover::before {
-    width: 1.6em;
-    height: 1.6em;
-  }
+  /* span {
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    padding: 18px 25px;
+    color: #fff;
+    font-size: 1.125em;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    z-index: 20;
+    transition: all 0.3s ease-in-out;
+  } */
 
-  &:active {
-    box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
-    transform: translate(0.1em, 0.1em);
+  /* &:hover span {
+    color: #183153;
+    animation: scaleUp 0.3s ease-in-out;
+  } */
+
+  @keyframes scaleUp {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(0.95);
+    }
+
+    100% {
+      transform: scale(1);
+    }
   }
 `;
-

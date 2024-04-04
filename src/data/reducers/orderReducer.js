@@ -11,6 +11,8 @@ const orderReducer = (state = initialState, action) => {
       }else{
         return [...state, action.payload];
       }
+    case TodoConstants.REMOVE_ITEM:
+      return state.filter((item) => item.produtoId !== action.payload);
     default:
       return state;
   }

@@ -19,7 +19,7 @@ const Home = () => {
             <FirstTextStyled>Sua fome pede</FirstTextStyled>
           </LogoText>
           <Link to="/menu">
-            <Button size={"large"}>Comprar</Button>
+            <Button width="20.0rem" height="5.0rem">Comprar</Button>
           </Link>
         </DivStyled>
         <img src={pizza_home} alt={pizza_home.name} />
