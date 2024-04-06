@@ -1,5 +1,7 @@
 export const ADD_ITEM = "ADD_ITEM";
 export const REMOVE_ITEM = "REMOVE_ITEM";
+export const INCREASE_QUANTITY = "INCREASE_QUANTITY";
+export const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 
 export const addItem = (selectedPizza, selectedDrinks) => {
   return {
@@ -24,6 +26,18 @@ export const addItem = (selectedPizza, selectedDrinks) => {
 export const removeItem = (ID) =>{
   return {
     type: REMOVE_ITEM,
+    payload: ID,
+  }
+}
+export const increaseQuantity = (ID) =>{
+  return {
+    type: INCREASE_QUANTITY,
+    payload: ID,
+  }
+}
+export const decreaseQuantity  = (ID) =>{
+  return {
+    type: DECREASE_QUANTITY,
     payload: ID,
   }
 }

@@ -1,5 +1,4 @@
-
-import * as TodoConstants from "../actions/orderActions"
+import * as TodoConstants from "../actions/orderActions";
 
 const initialState = [];
 
@@ -8,11 +7,35 @@ const orderReducer = (state = initialState, action) => {
     case TodoConstants.ADD_ITEM:
       if (state) {
         return [...state, ...action.payload];
-      }else{
+      } else {
         return [...state, action.payload];
       }
+
     case TodoConstants.REMOVE_ITEM:
       return state.filter((item) => item.produtoId !== action.payload);
+
+    case TodoConstants.INCREASE_QUANTITY:
+      return state.map((item) => {
+        if (item.produtoId == action.payload) {
+          return {
+            ...item,
+            quantidade: item.quantidade + 1
+          };
+        } else {
+          return item; // Retorna o item sem modificação se não for o item a ser atualizado
+        }
+      });
+    case TodoConstants.DECREASE_QUANTITY:
+      return state.map((item) => {
+        if (item.produtoId == action.payload) {
+          return {
+            ...item,
+            quantidade: item.quantidade - 1
+          };
+        } else {
+          return item; // Retorna o item sem modificação se não for o item a ser atualizado
+        }
+      });
     default:
       return state;
   }

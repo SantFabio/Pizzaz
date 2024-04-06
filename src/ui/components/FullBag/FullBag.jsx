@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import CounterButton from "../CounterButton/CounterButton";
+import { useSelector } from "react-redux";
 import {
   FullBegDivContainer,
   Title,
@@ -18,7 +19,15 @@ import Button from "../Button/Button";
 
 const FullBag = ({ bagState }) => {
   const dispatch = useDispatch();
-  console.log(bagState);
+  const orderState = useSelector((state) => {
+    return state;
+  });
+  const totalPrice =
+    orderState.length > 0
+      ? orderState
+          .map((item) => item.precoUnitario * item.quantidade)
+          .reduce((accumulator, currentValue) => accumulator + currentValue)
+      : 0;
   return (
     <FullBegDivContainer>
       <InnerContainer>
@@ -28,14 +37,14 @@ const FullBag = ({ bagState }) => {
           {bagState.map((item, index) => (
             <ListItem key={index}>
               <ProductName>{item.nomeProduto}</ProductName>
-              <CounterButton />
+              <CounterButton item={item} dispatch={dispatch} />
               <ProductDescription>{item.descricao}</ProductDescription>
               <RemoveButton
                 onClick={() => {
                   dispatch(removeItem(item.produtoId));
                 }}
               >
-                remover
+                Remover
               </RemoveButton>
             </ListItem>
           ))}
@@ -43,13 +52,15 @@ const FullBag = ({ bagState }) => {
       </InnerContainer>
       <SubtotalContainer>
         <div>Subtotal</div>
-        <div>R$ {},00</div>
+        <div>R$ {totalPrice},00</div>
       </SubtotalContainer>
       <TotalContainer>
         <span>Total</span>
-        <div>R$ {},00</div>
+        <div>R$ {totalPrice},00</div>
       </TotalContainer>
-      <Button width="100%" height="5.0rem">Escolher forma de pagamento</Button>
+      <Button width="100%" height="5.0rem">
+        Escolher forma de pagamento
+      </Button>
     </FullBegDivContainer>
   );
 };

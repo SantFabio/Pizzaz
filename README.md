@@ -19,7 +19,7 @@ Com certeza, Fábio! Para o seu site de pizzaria, sugiro algumas telas essenciai
 2. **Cardápio:** Listando categorias, tipos de pizzas e suas descrições. ✅
 3. **Detalhes do Produto:** Mostrando ingredientes, tamanhos e opções adicionais. ✅
 
-4. **Carrinho de Compras:** Onde os clientes podem revisar e editar seus pedidos.
+4. **Carrinho de Compras:** Onde os clientes podem revisar e editar seus pedidos. ✅
 5. **Autenticação/Cadastro:** Para os clientes se registrarem ou fazerem login.
 6. **Histórico de Pedidos:** Onde os clientes podem visualizar pedidos anteriores.
 7. **Página do Perfil:** Permitindo a edição das informações do cliente.
@@ -54,4 +54,35 @@ Funcionalidades Principais:
 
  
 
-Deixe abaixo o link para o github com seu projeto:
+<!-- const pedido = {
+  idPedido: "123456",
+  dataHora: new Date(),
+  status: "pendente",
+  cliente: {
+    nome: "Fábio Santana",
+    endereco: "Rua Exemplo, 123",
+    telefone: "(XX) XXXX-XXXX",
+    email: "exemplo@email.com"
+  },
+  metodoPagamento: "cartao_credito",
+  totalPedido: 0, // Este valor deve ser calculado com base nos itens do pedido
+  observacoes: "Sem cebola nas pizzas",
+  itens: [
+    {
+      produtoId: selectedPizza.id,
+      tipo: "pizza",
+      quantidade: 1,
+      precoUnitario: selectedPizza.preco,
+      nomeProduto: selectedPizza.nome,
+      descricao: selectedPizza.descricao,
+    },
+    {
+      produtoId: item.id,
+      tipo: "bebida",
+      quantidade: 1,
+      precoUnitario: item.preco,
+      nomeProduto: item.nome,
+    },
+    // Outros itens do pedido, se houver
+  ]
+}; -->

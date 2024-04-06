@@ -29,6 +29,7 @@ export const ButtonStyles = styled.button`
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    white-space: nowrap;
   }
 
   &:hover::after {

@@ -5,7 +5,7 @@ const theme = {
         secondary: "#FFFFFF",
         third: "#c03b51",
         normal: "#e5e5e5",
-        hover: "#E5E5E5",
+        hover: "#b7b7b7",
         shadowColor: "#00000019",
         warning: "#F9AE00",
         black: "#3E3E3E",

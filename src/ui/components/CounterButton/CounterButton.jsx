@@ -1,25 +1,25 @@
-import { useState } from "react";
+
+import { increaseQuantity, decreaseQuantity  } from "../../../data/actions/orderActions"
 import {
     ButtonContainer,
     CounterButtons
 }
 from "./CounterButton.styled"
 
-const CounterButton = () => {
-  const [counter, setCounter] = useState(1)
+const CounterButton = ({item, dispatch}) => {
   const incrementDecrement = (e) => {
-    let element = e.target.innerHTML;
-    if (element.includes("-") && counter > 1) {
-      setCounter(counter - 1)
-    } else if(element.includes("+")){
-      setCounter(counter + 1)
+    let symbol = e.target.innerHTML;
+    if (symbol.includes("-") && item.quantidade > 1) {
+      dispatch(decreaseQuantity(item.produtoId));
+    } else if(symbol.includes("+")){
+      dispatch(increaseQuantity(item.produtoId));
     }
   }
   return (
     <>
       <ButtonContainer>
         <CounterButtons onClick={incrementDecrement}>-</CounterButtons>
-        <div>{counter}</div>
+        <div>{item.quantidade}</div>
         <CounterButtons onClick={incrementDecrement}>+</CounterButtons>
       </ButtonContainer>
     </>

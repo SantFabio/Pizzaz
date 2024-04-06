@@ -1,36 +1,42 @@
-
 import { useState, useEffect } from "react";
 import Footer from "./ui/components/Footer/Footer";
-import Header from "./ui/components/Header/Header"
+import Header from "./ui/components/Header/Header";
 import Home from "./ui/pages/Home/Home";
-import Menu from "./ui/pages/Menu/Menu"
+import Menu from "./ui/pages/Menu/Menu";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import getPizzas from "../src/data/service/pizzasService"
+import getPizzas from "../src/data/service/pizzasService";
 import OrderSidebar from "./ui/components/OrderSidebar/OrderSidebar";
-
+import AuthPage from "./ui/pages/auth/AuthPage";
 
 function App() {
   const [pizzas, setPizzas] = useState([]);
   const [isOpen, setIsOpen] = useState(false); //isOpen do carrinho
+
   useEffect(() => {
     const unsubscribe = getPizzas(setPizzas);
     // Limpar a inscrição quando o componente for desmontado
     return () => unsubscribe();
-    
   }, []);
+
   return (
     <>
       <Router>
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
         <Routes>
-          <Route path="/menu/" exact element={<Menu pizzas={pizzas}/>} />
-          <Route path="/*" exact element={<Home />} />c
+          <Route path="/menu/" exact element={<Menu pizzas={pizzas} />} />
+          <Route path="/auth" exact element={<AuthPage />} />
+          <Route path="/*" exact element={<Home />} />
         </Routes>
-        <OrderSidebar pizzas={pizzas} setPizzas={setPizzas} isOpen={isOpen} setIsOpen={setIsOpen} />
+        <OrderSidebar
+          pizzas={pizzas}
+          setPizzas={setPizzas}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
         <Footer />
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

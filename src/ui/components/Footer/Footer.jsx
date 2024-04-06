@@ -1,4 +1,4 @@
-import logo from "../../../assets/img/logo.svg"
+import Logo from "../Logo/Logo"
 import instagram from "../../../assets/img/icon-instagram.svg"
 import facebook from "../../../assets/img/icon-facebook.svg"
 import linkedin from "../../../assets/img/icon-linkedin.svg"
@@ -28,7 +28,9 @@ const Footer = () => {
                         <p>Sobre nós</p>
                     </Informations>
                     <LogoStyled>
-                        <FooterLogo src={logo} alt="logo" />
+                        <FooterLogo>
+                            <Logo/>
+                        </FooterLogo>
                     </LogoStyled>
                     <SocialMedias>
                         <div>

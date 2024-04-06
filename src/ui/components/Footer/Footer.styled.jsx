@@ -35,7 +35,7 @@ export const Informations = styled.div`
 export const LogoStyled = styled.div`
     grid-area: logo;
 `;
-export const FooterLogo = styled.img`
+export const FooterLogo = styled.div`
     transform: translateX(-50px);
     width: 50.0rem;
 `;

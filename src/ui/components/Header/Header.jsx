@@ -15,22 +15,22 @@ import logo from "../../../assets/img/logo.svg";
 import login from "../../../assets/img/login.svg";
 import bag from "../../../assets/img/bag.svg";
 import { useSelector } from "react-redux";
+
 // import searchIcon from "../../../assets/img/search-icon.svg";
 // import OrderSidebar from "../OrderSidebar/OrderSidebar";
 const Header = ({ isOpen, setIsOpen }) => {
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
   const orderState = useSelector((state) => {
     return state;
   });
   const totalPrice =
     orderState.length > 0
       ? orderState
-          .map((item) => item.precoUnitario)
+          .map((item) => item.precoUnitario * item.quantidade)
           .reduce((accumulator, currentValue) => accumulator + currentValue)
       : 0;
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
     <>
       <HeaderStyled>
@@ -46,7 +46,9 @@ const Header = ({ isOpen, setIsOpen }) => {
         </InputMain> */}
 
         <EnterContainer>
-          <LoginImg src={login} alt="login-logo" />
+          <Link to={"/auth"}>
+            <LoginImg src={login} alt="login-logo" />
+          </Link>
           <BagContainer onClick={toggleSidebar}>
             <BagItems>
               <span>
