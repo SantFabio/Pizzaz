@@ -14,6 +14,7 @@ export const ButtonStyles = styled.button`
   border: none;
   width: ${(props) => props.width || "auto"};
   height: ${(props) => props.height || "auto"};
+  font-size: ${({theme}) => (theme.font.md)};
 
   &:after {
     content: " ${(props) => props.children} ";

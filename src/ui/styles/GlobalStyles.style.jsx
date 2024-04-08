@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
         padding: 0;
         box-sizing: border-box;
         font-family: ${({ theme }) => theme.font.fontFamily.inter};
+        font-size: ${({ theme }) => theme.font.sm};
         list-style-type: none;
         text-decoration: none;
         user-select: none;

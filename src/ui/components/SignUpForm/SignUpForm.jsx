@@ -1,66 +1,70 @@
-
-import styled from 'styled-components';
-
-const FormContainer = styled.form`
-  /* border: 1px solid #ccc; */
-`;
-
-const Container = styled.div`
-  padding: 16px;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-`;
-
-const Input = styled.input`
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-
-  &:focus {
-    background-color: #ddd;
-    outline: none;
-  }
-`;
-
-const StyledLink = styled.a`
-  color: dodgerblue;
-`;
-
-const SignUpButton = styled.button`
-  background-color: #04AA6D;
-`;
-
+import {
+  FormContainer,
+  Container,
+  Title,
+  Input,
+  InputForm,
+  Label,
+ } from "./SignUpForm.styled"
 const SignUpForm = () => {
   return (
-    <FormContainer action="/action_page.php">
+    <FormContainer>
       <Container>
-        <Title>Sign Up</Title>
-        <p>Please fill in this form to create an account.</p>
+        <Title>Cadastro</Title>
         <hr />
+        <Label htmlFor="email">
+          E-mail
+        </Label>
+        <InputForm>
+        <Input type="email" placeholder="Digite seu e-mail" name="email" required />
+        </InputForm>
 
-        <label htmlFor="email"><b>Email</b></label>
-        <Input type="text" placeholder="Enter Email" name="email" required />
+        <Label htmlFor="psw">
+          Senha
+        </Label>
+        <InputForm>
+        <Input
+          type="password"
+          placeholder="Digite sua senha"
+          name="psw"
+          required
+        />
+        </InputForm>
 
-        <label htmlFor="psw"><b>Password</b></label>
-        <Input type="password" placeholder="Enter Password" name="psw" required />
-
-        <label htmlFor="psw-repeat"><b>Repeat Password</b></label>
-        <Input type="password" placeholder="Repeat Password" name="psw-repeat" required />
-      
-        
-        <p>By creating an account you agree to our <StyledLink href="#">Terms & Privacy</StyledLink>.</p>
-
-        <div className="clearfix">
-          <SignUpButton type="submit">Sign Up</SignUpButton>
-        </div>
+        <Label htmlFor="psw-repeat">
+          Repita a senha
+        </Label>
+        <InputForm>
+        <Input
+          type="password"
+          placeholder="Repita sua senha"
+          name="psw-repeat"
+          required
+        />
+        </InputForm>
       </Container>
     </FormContainer>
   );
 };
 
 export default SignUpForm;
+
+{/* <label htmlFor="nome">
+  <b>Nome</b>
+</label>
+<Input type="text" placeholder="Digite seu nome" name="nome" required />
+
+<label htmlFor="telefone">
+  <b>Número de Telefone</b>
+</label>
+<Input type="text" placeholder="Digite seu número de telefone" name="telefone" required /> */}
+{/* <label htmlFor="endereco">
+  <b>Endereço</b>
+</label>
+<Input type="text" placeholder="Digite seu endereço" name="endereco" required />
+
+<label htmlFor="terms">
+  <input type="checkbox" name="termsPrivacy" id="terms" />
+  Eu li e concordo com os{" "}
+  <StyledLink href="#">Termos & Privacidade</StyledLink>.
+</label> */}
