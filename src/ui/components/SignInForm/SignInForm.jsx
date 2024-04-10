@@ -1,10 +1,14 @@
 // LoginForm.js
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import emailIcon from "../../../assets/img/emailIcon.svg";
 import passwordIcon from "../../../assets/img/password.svg";
 import googleIcon from "../../../assets/img/googleIcon.svg";
 import apple from "../../../assets/img/appleIcon.svg";
 import Button from "../../components/Button/Button";
+
 import {
   Form,
   InputForm,
@@ -16,12 +20,25 @@ import {
   HorizonLine,
   Orp,
   Title,
-} from "./SignIn.styled";
-import { Link } from "react-router-dom";
+} from "./SignInForm.styled";
+import { loginUser } from "../../../data/actions/authenticationActions";
+import { signInWithPassword } from "../../../data/service/authService";
 
 const SignInForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
+  useEffect(() => {
+    if (loggedIn) {
+      navigate("/"); // Redireciona apenas quando loggedIn for true
+    }
+  }, [loggedIn, navigate]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -31,14 +48,23 @@ const SignInForm = () => {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email:", email);
-    console.log("Senha:", password);
-    setEmail("");
-    setPassword("");
+    try {
+      const user = await signInWithPassword(email, password);
+      dispatch(loginUser(user));
+      setLoggedIn(!loggedIn);
+      setEmail("");
+      setPassword("");
+    } catch (error) {
+      console.log(error);
+    }
   };
-
+  const authWithGoogle = async (e) => {
+    e.preventDefault();
+    await loginWithGoogle();
+    setLoggedIn(true);
+  };
   return (
     <Form onSubmit={handleSubmit}>
       <Title>Login</Title>
@@ -53,6 +79,7 @@ const SignInForm = () => {
           type="text"
           value={email}
           onChange={handleEmailChange}
+          autoComplete="username"
           required
         />
       </InputForm>
@@ -68,6 +95,7 @@ const SignInForm = () => {
           type="password"
           value={password}
           onChange={handlePasswordChange}
+          autoComplete="current-password"
           required
         />
       </InputForm>
@@ -77,7 +105,7 @@ const SignInForm = () => {
           <input type="checkbox" />
           <label>Lembre de mim</label>
         </div> */}
-        <Span>Esqueceu sua senha?</Span>
+        {/* <Span>Esqueceu sua senha?</Span> */}
       </FlexRow>
 
       <Button type="submit" width="100%" height="5.0rem">
@@ -94,7 +122,7 @@ const SignInForm = () => {
       </Orp>
 
       <FlexRow>
-        <ButtonSubmit>
+        <ButtonSubmit onClick={authWithGoogle}>
           <img src={googleIcon} alt="icone do google" />
           Google
         </ButtonSubmit>

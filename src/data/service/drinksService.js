@@ -1,6 +1,6 @@
 //drinksService.js
 import { collection, onSnapshot } from "firebase/firestore";
-import db from "./firebase";
+import { db } from "./firebase";
 
 const DRINKS = "bebidas";
 const getDrinks = (setDrinks) => {

@@ -8,12 +8,15 @@ import {
   DivInnerContainer,
   LogoDiv,
 } from "./AuthPage.styled";
+import { Link } from "react-router-dom";
 
 const AuthPage = (sign) => {
   return (
     <AuthPageDivContainer>
       <LogoDiv>
-        <Logo />
+        <Link to={"/"}>
+          <Logo />
+        </Link>
       </LogoDiv>
 
       <DivInnerContainer>

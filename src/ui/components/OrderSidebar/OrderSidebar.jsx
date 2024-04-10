@@ -10,7 +10,9 @@ import FullBag from "../FullBag/FullBag";
 
 const CLOSE = "close";
 const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
-  const bagState = useSelector((state) => state);
+  const bagState = useSelector((state) => {
+    return state.orderState;
+  });
 
   const toggleSidebar = (event) => {
     const closeContainer = event.target.className;

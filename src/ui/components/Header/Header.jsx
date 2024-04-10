@@ -22,7 +22,7 @@ const Header = ({ isOpen, setIsOpen }) => {
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-  const orderState = useSelector((state) => {
+  const {orderState, userState} = useSelector((state) => {
     return state;
   });
   const totalPrice =

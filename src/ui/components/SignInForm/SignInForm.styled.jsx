@@ -83,12 +83,12 @@ export const Span = styled.span`
   font-weight: 500;
   cursor: pointer;
 `;
-export const HorizonLine = styled.hr`
+export const HorizonLine = styled.div`
   height: 0.1rem;
   width: 100%;
-  border-color: ${({ theme }) => theme.color.normal};
+  background-color: ${({ theme }) => theme.color.hover};
 `;
-export const Orp = styled.p`
+export const Orp = styled.div`
   display: flex;
   align-items: center;
   gap: 2.0rem;
