@@ -10,7 +10,9 @@ export const loginUser = (user) =>  {
   return {type: LOGIN_USER_SUCCESS,
     payload: user,}
 };
-
+export const logoutUser = () => {
+  return { type: LOGOUT_USER_SUCCESS };
+};
 // import { signInWithGoogle,  } from '../service/authService';
 
 

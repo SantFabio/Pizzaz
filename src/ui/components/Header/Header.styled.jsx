@@ -50,11 +50,6 @@ export const BagItems = styled.div`
   font-size: ${({ theme }) => theme.font.sm};
   color: ${({ theme }) => theme.color.secondary};
 `;
-
-export const LoginImg = styled.img`
-  height: 3rem;
-`;
-
 export const BagImg = styled.img`
-  height: 3.5rem;
+height: 3.0rem;
 `;

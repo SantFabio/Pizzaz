@@ -1,23 +1,11 @@
 import styled from 'styled-components';
 
-export const SideNavDivContainer = styled.div`
-  width: ${({ isOpen }) => (isOpen ? '100%' : '0%')};
-  height: 100%;
-  /* background-color: rgba(0, 0, 0, 0.69); */
-  position: fixed;
-  top: 7rem;
-  transition: ease 0.5s;
-  right: ${({ isOpen }) => (isOpen ? '0' : '-100%')}; 
-  display: flex;
-  justify-content: end;
-`;
-
 export const SideNav = styled.div`
   width: ${({ isOpen }) => (isOpen ? '55.0rem' : '0')};
-  height: 100%;
+  height: 100vh;
   z-index: 1;
   top: 0;
-  background-color: ${({theme}) => (theme.color.secondary)};
+  background-color: ${({ theme }) => (theme.color.secondary)};
   transition: ease 0.5s;
   display: flex;
   justify-content: center;

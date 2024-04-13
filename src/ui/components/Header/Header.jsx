@@ -1,7 +1,6 @@
 import {
   HeaderStyled,
   LogoImg,
-  LoginImg,
   BagImg,
   EnterContainer,
   BagContainer,
@@ -9,27 +8,52 @@ import {
 } from "./Header.styled";
 
 import { Link } from "react-router-dom";
-
+import { checkUserAuthentication } from "../../../data/service/authService";
 // import InputMain from "../InputMain/InputMain";
 import logo from "../../../assets/img/logo.svg";
-import login from "../../../assets/img/login.svg";
 import bag from "../../../assets/img/bag.svg";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loginUser } from "../../../data/actions/authenticationActions";
+import UserComponent from "../UserComponent/UserComponent";
 
 // import searchIcon from "../../../assets/img/search-icon.svg";
 // import OrderSidebar from "../OrderSidebar/OrderSidebar";
 const Header = ({ isOpen, setIsOpen }) => {
+  const dispatch = useDispatch();
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
-  const {orderState, userState} = useSelector((state) => {
+  const { orderState, userState } = useSelector((state) => {
     return state;
   });
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const user = await checkUserAuthentication();
+        if (user) {
+          // Usuário conectado
+          dispatch(loginUser(user));
+          console.log("Usuário conectado:", user);
+        } else {
+          // Nenhum usuário conectado
+          console.log("Nenhum usuário conectado");
+        }
+      } catch (error) {
+        console.error("Erro ao verificar autenticação:", error);
+      }
+    };
+
+    checkUser();
+  }, [dispatch]);
+
   const totalPrice =
     orderState.length > 0
       ? orderState
-          .map((item) => item.precoUnitario * item.quantidade)
-          .reduce((accumulator, currentValue) => accumulator + currentValue)
+        .map((item) => item.precoUnitario * item.quantidade)
+        .reduce((accumulator, currentValue) => accumulator + currentValue)
       : 0;
   return (
     <>
@@ -46,9 +70,7 @@ const Header = ({ isOpen, setIsOpen }) => {
         </InputMain> */}
 
         <EnterContainer>
-          <Link to={"/auth"}>
-            <LoginImg src={login} alt="login-logo" />
-          </Link>
+          <UserComponent isOpen={isOpen} userState={userState} />
           <BagContainer onClick={toggleSidebar}>
             <BagItems>
               <span>

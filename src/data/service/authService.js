@@ -5,10 +5,33 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  getAuth,
   updateProfile,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
-const auth = getAuth();
+import { auth } from "./firebase";
+// Certifique-se de importar a instância do Firebase Authentication
+// authService.js
+export const userLogOut = () => {
+  return signOut(auth)
+};
+
+export const checkUserAuthentication = () => {
+  return new Promise((resolve) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // Se houver um usuário conectado, resolva a promessa com o usuário
+        resolve(user);
+      } else {
+        // Se não houver usuário conectado, resolva a promessa com null
+        resolve(null);
+      }
+    });
+
+    // Retorne a função de cancelamento para limpar quando necessário
+    return unsubscribe;
+  });
+};
 
 export const registerWithEmailAndPassword = async (name, email, password) => {
   try {
@@ -118,4 +141,3 @@ export const signInWithGoogle = async () => {
       throw error; // Rejeita a promessa para que o componente possa lidar com o erro
     });
 };
-

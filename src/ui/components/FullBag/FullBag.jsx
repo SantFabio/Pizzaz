@@ -20,13 +20,13 @@ import Button from "../Button/Button";
 const FullBag = ({ bagState }) => {
   const dispatch = useDispatch();
   const orderState = useSelector((state) => {
-    return state;
+    return state.orderState;
   });
   const totalPrice =
     orderState.length > 0
       ? orderState
-          .map((item) => item.precoUnitario * item.quantidade)
-          .reduce((accumulator, currentValue) => accumulator + currentValue)
+        .map((item) => item.precoUnitario * item.quantidade)
+        .reduce((accumulator, currentValue) => accumulator + currentValue)
       : 0;
   return (
     <FullBegDivContainer>
