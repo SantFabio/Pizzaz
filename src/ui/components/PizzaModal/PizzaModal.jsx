@@ -17,8 +17,8 @@ import { useDispatch } from "react-redux";
 const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
   const [drinks, setDrinks] = useState([]);
   const dispatch = useDispatch();
- 
-  
+
+
   useEffect(() => {
     const unsubscribe = getDrinks(setDrinks);
     return () => unsubscribe();
@@ -31,7 +31,7 @@ const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
   };
   const addItemToBag = () => {
     const selectedDrinks = drinks
-    .filter((item) => item.selecionado == true)
+      .filter((item) => item.selecionado == true)
     const selectedPizza = pizzaInFocus;
     dispatch(addItem(selectedPizza, selectedDrinks));
     setIsOpen(false);

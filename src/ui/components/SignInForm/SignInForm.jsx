@@ -22,7 +22,7 @@ import {
   Title,
 } from "./SignInForm.styled";
 import { loginUser } from "../../../data/actions/authenticationActions";
-import { signInWithPassword } from "../../../data/service/authService";
+import { signInWithPassword, signInWithGoogle } from "../../../data/service/authService";
 
 const SignInForm = () => {
   const [email, setEmail] = useState("");
@@ -62,8 +62,13 @@ const SignInForm = () => {
   };
   const authWithGoogle = async (e) => {
     e.preventDefault();
-    await loginWithGoogle();
-    setLoggedIn(true);
+    try {
+      let { user, token } = await signInWithGoogle();
+      dispatch(loginUser(user));
+      setLoggedIn(!loggedIn);
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <Form onSubmit={handleSubmit}>

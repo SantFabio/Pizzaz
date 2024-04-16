@@ -13,25 +13,36 @@ import {
   PDropDown,
   StyledDoorIcon,
   StyledReceiptIcon,
+  LoginImg2,
 } from "./UserComponent.styled";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { userLogOut } from "../../../data/service/authService";
 import { logoutUser } from "../../../data/actions/authenticationActions";
 import { useState } from "react";
+import DivContainer from "../DivContainer/DivContainer";
+import LocationAddressInput from "../LocationAddressInput/LocationAddressInput";
+
+const CLOSE = "close";
 
 const UserComponent = ({ userState }) => {
   const dispatch = useDispatch();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
   // componente
-  const handleIsOpen = () => {
-    setIsOpen(!isOpen);
-  }
+  const handleClick = (event) => {
+    const closeContainer = event.target.className;
+    if (closeContainer.includes(CLOSE)) {
+      setIsOpen(!isOpen);
+    }
+  };
   const logOut = async () => {
     try {
       await userLogOut();
       dispatch(logoutUser());
+      setIsOpen(!isOpen);
+      navigate("/");
     } catch (error) {
       alert(error);
     }
@@ -41,32 +52,38 @@ const UserComponent = ({ userState }) => {
     <>
       {userState.isLoggedIn === true ? (
         <UserContainer >
-          <LoginImg src={person} alt="usuário" onClick={handleIsOpen} />
-          <DropDownUser isOpen={isOpen}>
-            <ImgUserImg
-              src={
-                userState.user.providerData[0].photoURL === null
-                  ? userDefaultImg
-                  : userState.user.providerData[0].photoURL
-              }
-              alt="imagem do usuário"
-            />
-            <UserName>Olá, {userState.user.displayName.split(' ')[0]}</UserName>
-            <Link to={"/userOrders"}>
-              <UserOrders>
-                <StyledReceiptIcon />
-                <PDropDown>Pedidos</PDropDown>
-              </UserOrders>
-            </Link>
-            <LogOutButton onClick={logOut}>
-              <StyledDoorIcon />
-              <PDropDown>Sair</PDropDown>
-            </LogOutButton>
-          </DropDownUser>
+          {userState.isLoggedIn ? <LocationAddressInput /> : {}}
+          <LoginImg className={CLOSE} src={person} alt="usuário" onClick={handleClick} />
+          <DivContainer
+            isOpen={isOpen}
+            handleClick={handleClick}
+          >
+            <DropDownUser isOpen={isOpen}>
+              <ImgUserImg
+                src={
+                  userState.user.photoURL === null
+                    ? userDefaultImg
+                    : userState.user.photoURL
+                }
+                alt="imagem do usuário"
+              />
+              <UserName>Olá, {userState.user.displayName.split(' ')[0]}</UserName>
+              <Link to={"/userOrders"}>
+                <UserOrders>
+                  <StyledReceiptIcon />
+                  <PDropDown>Pedidos</PDropDown>
+                </UserOrders>
+              </Link>
+              <LogOutButton onClick={logOut}>
+                <StyledDoorIcon />
+                <PDropDown>Sair</PDropDown>
+              </LogOutButton>
+            </DropDownUser>
+          </DivContainer>
         </UserContainer>
       ) : (
         <Link to={"/auth"}>
-          <LoginImg src={login} alt="login-logo" />
+          <LoginImg2 src={login} alt="login-logo" />
         </Link>
       )}
     </>

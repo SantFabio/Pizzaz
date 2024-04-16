@@ -13,6 +13,7 @@ tecs
     Firebase
     Redux 
     React-redux
+    @react-google-maps/api
 Com certeza, Fábio! Para o seu site de pizzaria, sugiro algumas telas essenciais:
 
 1. **Página Inicial:** Destacando promoções e os principais produtos. ✅
@@ -20,7 +21,7 @@ Com certeza, Fábio! Para o seu site de pizzaria, sugiro algumas telas essenciai
 3. **Detalhes do Produto:** Mostrando ingredientes, tamanhos e opções adicionais. ✅
 
 4. **Carrinho de Compras:** Onde os clientes podem revisar e editar seus pedidos. ✅
-5. **Autenticação/Cadastro:** Para os clientes se registrarem ou fazerem login.
+5. **Autenticação/Cadastro:** Para os clientes se registrarem ou fazerem login. ✅
 6. **Histórico de Pedidos:** Onde os clientes podem visualizar pedidos anteriores.
 7. **Página do Perfil:** Permitindo a edição das informações do cliente.
 8. **Página de Confirmação:** Após efetuar o pedido, uma confirmação clara.
@@ -52,6 +53,7 @@ Funcionalidades Principais:
 
 11. Scrum a. Comentar sobre como poderia ser utilizado a metodologia Scrum para o desenvolvimento desse sistema e quais seriam os ganhos para a equipe e para o projeto.
 
+Chave de autenticação da API do Google Cloud Platform: AIzaSyCbaI2f4Fpaeq0DpMq9ZG0fVntdW2K5UOw
  
 
 <!-- const pedido = {

@@ -16,22 +16,21 @@ const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
     return state.orderState;
   });
 
-  const toggleSidebar = (event) => {
-    const closeContainer = event.target;
-    console.log(closeContainer);
-    // if (closeContainer.includes(CLOSE)) {
-    //   setIsOpen(!isOpen);
-    // }
+  const handleClick = (event) => {
+    const closeContainer = event.target.className;
+    if (closeContainer.includes(CLOSE)) {
+      setIsOpen(!isOpen);
+    }
   };
 
   return (
     <>
       <DivContainer
         isOpen={isOpen}
-        onClick={toggleSidebar}
+        handleClick={handleClick}
       >
         <SideNav isOpen={isOpen}>
-          <SpanStyled className={CLOSE} onClick={toggleSidebar}>
+          <SpanStyled className={CLOSE} onClick={handleClick}>
             X
           </SpanStyled>
           {bagState.length ? <FullBag pizzas={pizzas} setPizzas={setPizzas} bagState={bagState} /> : <EmptyBag isOpen={isOpen} />}

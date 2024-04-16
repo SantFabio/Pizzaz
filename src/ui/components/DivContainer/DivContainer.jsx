@@ -2,12 +2,8 @@ import { Container } from "./DivContainer.styled"
 
 const CLOSE = "close";
 
-const DivContainer = ({ children, isOpen, onClick }) => {
-    const handleClick = () => {
-        if (onClick) {
-            onClick();
-        }
-    };
+const DivContainer = ({ children, isOpen, handleClick }) => {
+
     return (
         <Container
             className={CLOSE}

@@ -36,7 +36,6 @@ const Header = ({ isOpen, setIsOpen }) => {
         if (user) {
           // Usuário conectado
           dispatch(loginUser(user));
-          console.log("Usuário conectado:", user);
         } else {
           // Nenhum usuário conectado
           console.log("Nenhum usuário conectado");

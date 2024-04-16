@@ -8,14 +8,20 @@ export const UserContainer = styled.div`
   height: 3rem;
   `;
 export const LoginImg = styled.img`
-  height: 100%;
+  position: relative;
+  height: 3.0rem;
+  `;
+export const LoginImg2 = styled.img`
+  position: relative;
+  height: 2.8rem;
+  top: 2px;
   `;
 
 export const DropDownUser = styled.div`
-  position: absolute;
-  top: -2.0rem;
-  margin-top: 7.0rem;
-  right: 0;
+  position: fixed;
+  top: 7.0rem;
+  /* margin-top: 7.0rem; */
+  right: 17.5rem;
   border-radius: 0 0 10px 10px;
   padding: ${({ isOpen }) => (isOpen ? "3.0rem 0" : "0")};
   max-height: ${({ isOpen }) => (isOpen ? "80vh" : "0")}; /* Defina um valor máximo grande quando aberto e 0 quando fechado */
@@ -26,6 +32,8 @@ export const DropDownUser = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 4px 8px ${({ theme }) => (theme.color.normal)};
+
   & > *:not(img) {
     width: 100%;
     height: 6.0rem;
