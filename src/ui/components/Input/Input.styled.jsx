@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const InputMainStyled = styled.div`
+export const InputStyled = styled.div`
     all: unset;
     background-color: ${({ theme }) => theme.color.third};
     height: 4.5rem;

@@ -1,5 +1,5 @@
 import arrow from "../../../../assets/img/icon-right-arrow.svg"
-import InputMain from "../../InputMain/InputMain";
+import InputMain from "../../Input/Input";
 
 const NewsLetter = () => {
     return (
@@ -27,7 +27,7 @@ export default NewsLetter;
               <div class="response" id="mce-success-response" style="display: none;"></div>
           </div>
       <div aria-hidden="true" style="position: absolute; left: -5000px;"> */}
-          /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+/* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
 //           <input type="text" name="b_f25d79aa05f5d492c15c7fc4b_1cbf4212eb" tabindex="-1" value="">
 //       </div>
 //           <div class="optionalParent">
@@ -40,4 +40,3 @@ export default NewsLetter;
 //   </form>
 //   </div>
 //   </div>
-  
