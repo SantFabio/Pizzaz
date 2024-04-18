@@ -4,16 +4,17 @@ export const InputStyled = styled.div`
     all: unset;
     background-color: ${({ theme }) => theme.color.third};
     height: 4.5rem;
-    width: 44.4rem;
+    width: 100%;
     border-radius: 1.0rem;
     display: flex;
     flex-direction: row;
      div{
             height: 100%;
-            width: 10%;
+            width: 15%;
             display: flex;
             justify-content: center;
             align-items: center;
+            /* background-color: aliceblue; */
         img{
             height: 3.0rem;
         }
@@ -21,7 +22,7 @@ export const InputStyled = styled.div`
     input {
         all: unset;
         height: 100%;
-        width: 90%;
+        width: 100%;
         letter-spacing: 0.1rem;
         font-size: ${({ theme }) => theme.font.md};
         color: ${({ theme }) => theme.color.secondary};

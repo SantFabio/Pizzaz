@@ -18,7 +18,7 @@ const useGeolocation = () => {
                     }
                 );
             } else {
-                setError("Geolocation is not supported by this browser.");
+                // setError("Geolocation is not supported by this browser.");
             }
         };
 
