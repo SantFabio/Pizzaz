@@ -23,13 +23,13 @@ export const FormContainer2 = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 1.0rem;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   transition: opacity 1s ease;
   z-index: ${({ index }) => (index ? "1" : "2")};
-  opacity: ${({index}) => (index ? "0": "1")};
+  opacity: ${({ index }) => (index ? "0" : "1")};
   padding: 0 3.0rem 0 3.0rem;
 `;
 
@@ -45,6 +45,10 @@ export const Title = styled.h1`
   font-size: ${({ theme }) => theme.font.xx};
 `;
 
+export const Label = styled.label`
+  font-size: ${({ theme }) => theme.font.md};
+  font-weight: 500;
+`;
 export const InputForm = styled.div`
   border: 1.5px solid ${({ theme }) => theme.color.normal};
   border-radius: 10px;
@@ -71,10 +75,6 @@ export const Input = styled.input`
   }
 `;
 
-export const Label = styled.label`
-  font-size: ${({ theme }) => theme.font.md};
-  font-weight: 500;
-`;
 export const Span = styled.span`
   font-size: ${({ theme }) => theme.font.sm};
   color: ${({ theme }) => theme.color.primary};
