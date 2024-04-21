@@ -52,7 +52,7 @@ const UserComponent = ({ userState }) => {
     <>
       {userState.isLoggedIn === true ? (
         <UserContainer >
-          {userState.isLoggedIn ? <LocationAddressInput /> : {}}
+          {userState.isLoggedIn ? <LocationAddressInput userState={userState} /> : {}}
           <LoginImg className={CLOSE} src={person} alt="usuário" onClick={handleClick} />
           <DivContainer
             isOpen={isOpen}

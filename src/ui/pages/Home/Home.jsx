@@ -7,6 +7,7 @@ import {
   FirstTextStyled,
   SecondTextStyled,
   LogoText,
+  PizzaImg,
 } from "./Home.styled";
 
 const Home = () => {
@@ -16,13 +17,13 @@ const Home = () => {
         <DivStyled>
           <LogoText>
             <SecondTextStyled>Bem vindo ao Pizzaz</SecondTextStyled>
-            <FirstTextStyled>Sua fome pede</FirstTextStyled>
+            <FirstTextStyled>Onde sua fome tem jeito</FirstTextStyled>
           </LogoText>
           <Link to="/menu">
             <Button width="20.0rem" height="5.0rem">Comprar</Button>
           </Link>
         </DivStyled>
-        <img src={pizza_home} alt={pizza_home.name} />
+        <PizzaImg src={pizza_home} alt={pizza_home.name} />
       </HomeStyled>
     </>
   );

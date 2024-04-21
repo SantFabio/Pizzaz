@@ -49,6 +49,7 @@ export const TitleH1 = styled.h1`
 export const ContainerMap = styled.div`
   height: 100%;
   width: 100%;
+
 `;
 export const FormGrid = styled.div`
 height: 70%;
@@ -72,4 +73,12 @@ export const ButtonContainer = styled.div`
   top: 80%;
   height: auto;
   width: 80%;
+`;
+export const ImgBack = styled.img`
+  width: 3.0rem;
+  height: 3.0rem;
+  position: absolute;
+  top: 3.5rem;
+  left: calc(100% - 90%);
+  z-index: 1;
 `;

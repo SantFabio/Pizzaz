@@ -32,20 +32,19 @@ const Input = styled.input`
   }
 `;
 
-const FormInput = ({ label, htmlFor, placeholder, name, value, handleChange, required }) => {
-
-
+const FormInput = ({ label, htmlFor, placeholder, name, value, handleChange, required, type, pattern }) => {
   return (
     <>
       <Label htmlFor={htmlFor}>{label}:</Label>
       <InputForm>
         <Input
-          type="text"
+          type={type}
           placeholder={placeholder}
           name={name}
           value={value}
           onChange={handleChange}
           required={required}
+          pattern={pattern}
         />
       </InputForm>
     </>

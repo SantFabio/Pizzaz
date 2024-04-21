@@ -1,9 +1,9 @@
 
 import CardStyled from "./Cards.styled";
 
-const Cards = ({ pizza, setIsOpen, setPizzaInFocus }) => {
+const Cards = ({ pizza, setIsOpenPizzaModal, setPizzaInFocus }) => {
     const handleClick = () => {
-        setIsOpen(true);
+        setIsOpenPizzaModal(true);
         setPizzaInFocus(pizza);
     }
     return (

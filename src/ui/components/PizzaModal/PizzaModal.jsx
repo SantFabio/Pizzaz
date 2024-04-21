@@ -14,7 +14,7 @@ import getDrinks from "../../../data/service/drinksService";
 import { addItem } from "../../../data/actions/orderActions";
 import { useDispatch } from "react-redux";
 
-const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
+const PizzaModal = ({ pizzaInFocus, setIsOpenPizzaModal, setIsOpen }) => {
   const [drinks, setDrinks] = useState([]);
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
 
   const handleCloseModal = (event) => {
     if (event.target.id === "modal") {
-      setIsOpen(false);
+      setIsOpenPizzaModal(false);
     }
   };
   const addItemToBag = () => {
@@ -34,7 +34,8 @@ const PizzaModal = ({ pizzaInFocus, setIsOpen }) => {
       .filter((item) => item.selecionado == true)
     const selectedPizza = pizzaInFocus;
     dispatch(addItem(selectedPizza, selectedDrinks));
-    setIsOpen(false);
+    setIsOpenPizzaModal(false);
+    setIsOpen(true);
   };
 
   return (

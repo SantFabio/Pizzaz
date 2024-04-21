@@ -4,6 +4,7 @@ export const HomeStyled = styled.main`
     background-color: ${({ theme }) => theme.color.primary};
     /* background-color: aqua; */
     max-height: auto;
+    position: relative;
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -18,6 +19,8 @@ export const DivStyled = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: absolute;
+    z-index: 2;
     /* background-color: aqua; */
     justify-content: space-around;
     `;
@@ -36,6 +39,14 @@ export const SecondTextStyled = styled.p`
     font-family: ${({ theme }) => theme.font.fontFamily.shrikhand};
     font-size: 5.0rem;
 `;
+
+export const PizzaImg = styled.img`
+position: absolute;
+    z-index: 1;
+    left: 20%;
+
+`;
+
 
 
 

@@ -9,8 +9,8 @@ import Dropdown from "../../components/Dropdown/Dropdown";
 import { useState } from "react";
 import PizzaModal from "../../components/PizzaModal/PizzaModal";
 
-const Menu = ({ pizzas }) => {
-    const [isOpen, setIsOpen] = useState(false);
+const Menu = ({ pizzas, setIsOpen }) => {
+    const [isOpenPizzaModal, setIsOpenPizzaModal] = useState(false);
     const [pizzaInFocus, setPizzaInFocus] = useState(null);
 
     return (
@@ -25,7 +25,7 @@ const Menu = ({ pizzas }) => {
                                 <Cards
                                     pizza={pizza}
                                     key={pizza.id}
-                                    setIsOpen={setIsOpen}
+                                    setIsOpenPizzaModal={setIsOpenPizzaModal}
                                     setPizzaInFocus={setPizzaInFocus}
                                 >
                                 </Cards>
@@ -34,9 +34,10 @@ const Menu = ({ pizzas }) => {
                     </UlStyled>
                 </div>
                 {
-                    isOpen ? <PizzaModal 
-                    pizzaInFocus={pizzaInFocus}
-                    setIsOpen={setIsOpen}
+                    isOpenPizzaModal ? <PizzaModal
+                        pizzaInFocus={pizzaInFocus}
+                        setIsOpenPizzaModal={setIsOpenPizzaModal}
+                        setIsOpen={setIsOpen}
                     /> : null
                 }
             </MenuStyled>
