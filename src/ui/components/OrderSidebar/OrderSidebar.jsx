@@ -4,8 +4,9 @@ import {
 } from "./OrderSidebar.styled";
 
 import EmptyBag from "../EmptyBag/EmptyBag";
-import FullBag from "../FullBag/FullBag";
+import FullBag from "../Order/Order";
 import DivContainer from "../DivContainer/DivContainer";
+import Button from "../Button/Button";
 
 import { useSelector } from "react-redux";
 
@@ -34,6 +35,9 @@ const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
             X
           </SpanStyled>
           {bagState.length ? <FullBag pizzas={pizzas} setPizzas={setPizzas} bagState={bagState} /> : <EmptyBag isOpen={isOpen} />}
+          <Button width="100%" height="5.0rem">
+            Escolher forma de pagamento
+          </Button>
         </SideNav>
       </DivContainer>
     </>

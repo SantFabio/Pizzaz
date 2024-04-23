@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const FullBegDivContainer = styled.div`
-  width: 85%;
+  width: 100%;
   height: 100%;
   /* background-color: bisque; */
   display: flex;
@@ -10,10 +10,10 @@ export const FullBegDivContainer = styled.div`
 
 export const InnerContainer = styled.div`
   width: 100%;
-  height: 65%;
+  height: 90%;
   overflow-y: scroll;
   /* background-color: aquamarine; */
-`;
+  `;
 export const Title = styled.div`
   font-size: ${({ theme }) => theme.font.md};
   margin: 1rem 0 1rem 0;
@@ -22,18 +22,22 @@ export const Title = styled.div`
 export const HorizontalLine = styled.hr`
   border-color: ${({ theme }) => theme.color.normal};
   margin: 1rem 0 1rem 0;
-`;
+  `;
 export const UlStyled = styled.ul`
   li:not(:last-child) {
     border-bottom: 1px solid red; 
   }
+  /* background-color: aquamarine; */
   `;
 export const ListItem = styled.li`
   /* background-color: chocolate; */
   display: grid;
-  grid-template-columns: 3fr 1fr; 
+  grid-template-columns: 70% 30%; 
   grid-template-rows: auto auto; 
   column-gap : 2.0rem;
+  row-gap : 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 1.0rem;
 `;
 
 export const ProductName = styled.h1`
@@ -72,8 +76,4 @@ justify-content: space-between;
 font-size: ${({ theme }) => theme.font.md};
 font-weight: bold;
 margin: 0.5rem 0 1.2rem 0;
-`;
-
-export const PaymentButton = styled.button`
-  /* Estilos para o botão de pagamento */
 `;

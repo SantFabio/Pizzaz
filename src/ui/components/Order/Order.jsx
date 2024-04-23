@@ -13,9 +13,8 @@ import {
   TotalContainer,
   InnerContainer,
   UlStyled,
-} from "./FullBag.styled";
+} from "./Order.styled";
 import { removeItem } from "../../../data/actions/orderActions";
-import Button from "../Button/Button";
 
 const FullBag = ({ bagState }) => {
   const dispatch = useDispatch();
@@ -58,9 +57,6 @@ const FullBag = ({ bagState }) => {
         <span>Total</span>
         <div>R$ {totalPrice},00</div>
       </TotalContainer>
-      <Button width="100%" height="5.0rem">
-        Escolher forma de pagamento
-      </Button>
     </FullBegDivContainer>
   );
 };
