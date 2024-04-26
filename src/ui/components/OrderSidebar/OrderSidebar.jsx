@@ -9,6 +9,7 @@ import DivContainer from "../DivContainer/DivContainer";
 import Button from "../Button/Button";
 
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CLOSE = "close";
 
@@ -35,9 +36,13 @@ const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
             X
           </SpanStyled>
           {bagState.length ? <FullBag pizzas={pizzas} setPizzas={setPizzas} bagState={bagState} /> : <EmptyBag isOpen={isOpen} />}
-          <Button width="100%" height="5.0rem">
-            Escolher forma de pagamento
-          </Button>
+          {bagState.length ?
+            <Link to={"/checkout"}>
+              <Button className={CLOSE} width="100%" height="5.0rem" onClick={handleClick}>
+                Escolher forma de pagamento
+              </Button>
+            </Link>
+            : <></>}
         </SideNav>
       </DivContainer>
     </>

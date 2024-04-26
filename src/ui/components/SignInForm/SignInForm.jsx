@@ -23,6 +23,7 @@ import {
 } from "./SignInForm.styled";
 import { loginUser } from "../../../data/actions/authenticationActions";
 import { signInWithPassword, signInWithGoogle } from "../../../data/service/authService";
+import { getUserById } from "../../../data/service/userDataService";
 
 const SignInForm = () => {
   const [email, setEmail] = useState("");
@@ -63,7 +64,9 @@ const SignInForm = () => {
   const authWithGoogle = async (e) => {
     e.preventDefault();
     try {
-      let { user, token } = await signInWithGoogle();
+      let user = await signInWithGoogle();
+      console.log(await getUserById(user.uid))
+      console.log(user);
       dispatch(loginUser(user));
       setLoggedIn(!loggedIn);
     } catch (error) {

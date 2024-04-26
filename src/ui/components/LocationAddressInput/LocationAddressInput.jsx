@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import location from "../../../assets/img/location.svg";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api"
 import { getLocationCoordinates, API_KEY } from "../../../data/service/geoLocationService"
@@ -46,9 +46,6 @@ const LocationAddressInput = ({ userState }) => {
             longitude: 0,
         }
     });
-    useEffect(() => {
-        console.log(coordinates);
-    }, [coordinates]);
 
     const { isLoaded } = useJsApiLoader({
         id: 'google-map-script',
@@ -65,7 +62,6 @@ const LocationAddressInput = ({ userState }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setFormData({ ...formData, coordinates: coordinates });
         try {
             await updateAddress(userState.user.uid, formData);
             setIsOpen(false);
@@ -123,6 +119,7 @@ const LocationAddressInput = ({ userState }) => {
             latitude: event.latLng.lat(),
             longitude: event.latLng.lng()
         });
+        setFormData({ ...formData, coordinates: coordinates });
     };
 
     return (

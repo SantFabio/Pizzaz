@@ -88,7 +88,7 @@ export const signInWithGoogle = async () => {
       // The signed-in user info.
       const user = result.user;
       addUser(user)
-      return { user, token };
+      return user;
     })
     .catch((error) => {
       // Handle Errors here.
@@ -129,6 +129,7 @@ const addUser = async (user) => {
       const userQuerySnapshot = await getDocs(userQuery);
       if (userQuerySnapshot.size == 0) {
         const docRef = await setDoc(doc(collection(db, "usuarios"), user.uid), {
+          uid: user.uid,
           email: user.email,
           displayName: user.displayName,
           photoURL: user.photoURL ? user.photoURL : null,
@@ -137,7 +138,7 @@ const addUser = async (user) => {
           provider: user.providerData[0].providerId ? user.providerData[0].providerId : null,
         });
 
-        console.log("Document written with ID: ", docRef.id);
+        console.log("Document written with ID: ", docRef.uid);
       } else {
         console.log("O documento de usuário já existe no Firestore.");
       }

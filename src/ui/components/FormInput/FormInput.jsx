@@ -14,6 +14,8 @@ const InputForm = styled.div`
   align-items: center;
   padding-left: 10px;
   transition: 0.2s ease-in-out;
+  margin-top: 0.2rem;
+  margin-bottom: 1.0rem;
   /* gap: 1.0rem; */
   &:focus-within {
     border: 1.5px solid ${({ theme }) => theme.color.primary};
