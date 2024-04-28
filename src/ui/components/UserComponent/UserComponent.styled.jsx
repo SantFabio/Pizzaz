@@ -6,6 +6,9 @@ import Receipt from "../SvgComponents/Receipt";
 export const UserContainer = styled.div`
   position: relative;
   height: 3rem;
+  width: 30.0rem;
+  display: flex;
+  gap: 1.0rem;
   `;
 export const LoginImg = styled.img`
   position: relative;
@@ -28,7 +31,7 @@ export const DropDownUser = styled.div`
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease; 
   width: 32.0rem;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => (theme.color.secondary)};
   display: flex;
   flex-direction: column;
   align-items: center;

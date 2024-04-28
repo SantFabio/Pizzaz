@@ -1,7 +1,6 @@
 
 import { useState } from 'react';
-import { useSelector } from "react-redux";
-import FullBag from '../../components/Order/Order';
+import Order from '../../components/Order/Order';
 import {
     Container,
     Row,
@@ -14,18 +13,17 @@ import {
     OrderSummary,
     StepDivider,
     H1Summary,
+    Address,
 } from "./Checkout.styled"
 import ChoosePaymentMethod from '../../components/ChoosePaymentMethod/ChoosePaymentMethod';
-// Estilos dos componentes usando styled-components
+import Button from '../../components/Button/Button';
+import LocationAddressInput from '../../components/LocationAddressInput/LocationAddressInput';
+
 
 
 // Componente principal
 const Checkout = () => {
     const [currentStep, setCurrentStep] = useState(1);
-    const bagState = useSelector((state) => {
-        return state.orderState;
-    });
-
     // Função para avançar para a próxima etapa
     const nextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -44,8 +42,12 @@ const Checkout = () => {
                 return (
                     <OrderSummary>
                         <H1Summary>Resumo do Pedido</H1Summary>
-                        <FullBag bagState={bagState} ></FullBag>
-                        <button onClick={nextStep}>Continuar</button>
+                        <Address>
+                            <h2>Endereço de entraga:</h2>
+                            <LocationAddressInput></LocationAddressInput>
+                        </Address>
+                        <Order />
+                        <Button onClick={nextStep} width={"100%"} height={"4.5rem"}>Continuar</Button>
                     </OrderSummary>
                 );
             case 2:
@@ -53,6 +55,7 @@ const Checkout = () => {
                     <>
                         <OrderSummary>
                             <ChoosePaymentMethod></ChoosePaymentMethod>
+                            <Button onClick={nextStep} width={"100%"} height={"4.5rem"}>Finalizar pedido</Button>
                         </OrderSummary>
                     </>
                 );
@@ -79,7 +82,7 @@ const Checkout = () => {
                         <CircleStep onClick={currentStep === 2 ? prevStep : ""}>1
                             <StepDivider />
                         </CircleStep>
-                        Shopping Cart
+                        Sacola de Compras
                     </ProgressStep>
                     {/* <ProgressIndicator>
                         <StepMarker></StepMarker>
@@ -93,7 +96,7 @@ const Checkout = () => {
                     </ProgressIndicator2> */}
                     <ProgressStep className={currentStep === 3 ? 'complete' : ''}>
                         <CircleStep>3</CircleStep>
-                        Order Complete
+                        Pedido Feito
                     </ProgressStep>
                 </UlProgressCheckout>
             </CheckoutProgress>

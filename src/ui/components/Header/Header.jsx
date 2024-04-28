@@ -28,7 +28,7 @@ const Header = ({ isOpen, setIsOpen }) => {
   const { orderState, userState } = useSelector((state) => {
     return state;
   });
-
+  console.log(orderState);
   useEffect(() => {
     const checkUser = async () => {
       try {
@@ -49,8 +49,8 @@ const Header = ({ isOpen, setIsOpen }) => {
   }, [dispatch]);
 
   const totalPrice =
-    orderState.length > 0
-      ? orderState
+    orderState.items.length > 0
+      ? orderState.items
         .map((item) => item.precoUnitario * item.quantidade)
         .reduce((accumulator, currentValue) => accumulator + currentValue)
       : 0;
@@ -76,7 +76,7 @@ const Header = ({ isOpen, setIsOpen }) => {
                 R$ {totalPrice}
                 ,00
               </span>
-              <span>{orderState ? orderState.length : 0} itens</span>
+              <span>{orderState.items ? orderState.items.length : 0} itens</span>
             </BagItems>
             <BagImg src={bag} alt="bag" />
           </BagContainer>

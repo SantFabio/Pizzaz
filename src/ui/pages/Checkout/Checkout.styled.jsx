@@ -20,7 +20,7 @@ export const Column = styled.div`
   `;
 
 export const FormContainer = styled.div`
-  /* background-color: #f2f2f2; */
+  background-color: ${({ theme }) => (theme.color.normal)};
   height: auto;
   width: 100%;
   max-width: 75.0rem;
@@ -91,4 +91,12 @@ export const H1Summary = styled.h1`
   color: ${({ theme }) => (theme.color.black)};
   font-size: ${({ theme }) => (theme.font.xl)};
   margin-bottom: 2.0rem;
+  `;
+export const Address = styled.div`
+ width: 100%;
+ height: 5.5rem;
+ background-color: ${({ theme }) => (theme.color.hover)};
+ padding: 0 1.0rem 0 1.0rem ;
+ margin-bottom: 1.0rem;
+ border-radius: 0.5rem;
 `;

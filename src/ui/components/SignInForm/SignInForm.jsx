@@ -1,7 +1,7 @@
 // LoginForm.js
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import emailIcon from "../../../assets/img/emailIcon.svg";
 import passwordIcon from "../../../assets/img/password.svg";
@@ -30,11 +30,8 @@ const SignInForm = () => {
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
-  const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
+
   useEffect(() => {
     if (loggedIn) {
       navigate("/"); // Redireciona apenas quando loggedIn for true

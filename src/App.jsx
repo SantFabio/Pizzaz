@@ -55,7 +55,7 @@ function App() {
           <Route path="/auth/" exact element={<AuthPage login />} />
           <Route path="/auth/signup/" exact element={<AuthPage signup />} />
           <Route path="/menu/" exact element={<Menu pizzas={pizzas} setIsOpen={setIsOpen} />} />
-          <Route path="/checkout/" exact element={<Checkout />} />
+          <Route path="/checkout/" exact element={<Checkout userState={userState} />} />
           <Route path="/*" exact element={<Home />} />
         </Routes>
         <OrderSidebar

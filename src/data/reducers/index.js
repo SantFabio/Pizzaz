@@ -5,7 +5,7 @@ import orderReducer from './orderReducer'; // Importe seu reducer existente
 import userReducer from './authenticationReducer';
 
 const rootReducer = combineReducers({
-  orderState: orderReducer, //[] array
+  orderState: orderReducer, //{} object
   userState: userReducer, //{} object
 });
 

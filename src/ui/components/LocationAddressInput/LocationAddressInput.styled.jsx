@@ -3,8 +3,27 @@ import styled from "styled-components";
 export const ImgLocationButton = styled.img`
   position: relative;
   height: 3.0rem;
-  margin-right: 1.0rem;
 `;
+export const DivAdressConteiner = styled.div`
+ width: 100%;
+ height: auto;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+  padding: 0 1.0rem 0 1.0rem;
+  color: ${({ theme }) => (theme.color.secondary)};
+  border-bottom: 1px solid ${({ theme }) => (theme.color.secondary)};
+  border-radius: 5px;
+  
+`;
+export const AdressParagraph = styled.p`
+  width: 90%;
+  max-width: 17.5rem;
+  white-space: nowrap; /* Impede a quebra de texto em várias linhas */
+  overflow: hidden; /* Esconde o texto que exceder o tamanho da linha */
+  text-overflow: ellipsis; /* Exibe "..." quando o texto exceder o tamanho da linha */
+`;
+
 export const LoadMap = styled.div`
     width: 50%;
     height: 100%;

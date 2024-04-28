@@ -17,7 +17,7 @@ import {
 } from "./UserComponent.styled";
 
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogOut } from "../../../data/service/authService";
 import { logoutUser } from "../../../data/actions/authenticationActions";
 import { useState } from "react";
@@ -26,9 +26,10 @@ import LocationAddressInput from "../LocationAddressInput/LocationAddressInput";
 
 const CLOSE = "close";
 
-const UserComponent = ({ userState }) => {
+const UserComponent = () => {
   const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
+  const { userState } = useSelector((state) => (state));
   const navigate = useNavigate();
   // componente
   const handleClick = (event) => {

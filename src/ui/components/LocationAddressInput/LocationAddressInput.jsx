@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import location from "../../../assets/img/location.svg";
 import { useJsApiLoader, GoogleMap, Marker } from "@react-google-maps/api"
 import { getLocationCoordinates, API_KEY } from "../../../data/service/geoLocationService"
@@ -14,19 +14,26 @@ import {
     ButtonContainer,
     ContainerMap,
     ImgBack,
+    DivAdressConteiner,
+    AdressParagraph,
 } from "./LocationAddressInput.styled";
 import Button from "../Button/Button";
 import Modal from "../Modal/Modal";
 import FormInput from "../FormInput/FormInput";
 import back from "../../../assets/img/back.svg";
-import { updateAddress } from '../../../data/service/userDataService';
+import { getUserById, updateAddress } from '../../../data/service/userDataService';
+import { useSelector } from 'react-redux';
 
-const LocationAddressInput = ({ userState }) => {
-
+const LocationAddressInput = () => {
+    const { userState } = useSelector((state) => {
+        return state;
+    });
+    const [userAdress, setUserAdress] = useState("");
     const [isOpen, setIsOpen] = useState(false);
     const [index, setIndex] = useState(true);
     // solicitação para saber se o usuario deseja usar a localização pelo dispositivo
     // const [userLocation, setUserLocation] = useState(null);
+    console.log(userAdress);
     const [coordinates, setCoordinates] = useState(
         {
             latitude: -1.302949,
@@ -122,9 +129,24 @@ const LocationAddressInput = ({ userState }) => {
         setFormData({ ...formData, coordinates: coordinates });
     };
 
+    useEffect(() => {
+        const getUserData = async () => {
+            try {
+                const userData = await getUserById(userState.user.uid);
+                setUserAdress(`${userData.address.street}, ${userData.address.number}, ${userData.address.neighborhood}, ${userData.address.city}, ${userData.address.state}, ${userData.address.country}, ${userData.address.zip}`)
+            } catch (error) {
+                alert(error);
+            }
+        }
+        getUserData()
+    }, [userState, isOpen])
+
     return (
         <>
-            <ImgLocationButton src={location} onClick={handleModal} />
+            <DivAdressConteiner onClick={handleModal}>
+                <AdressParagraph>{userAdress == undefined || null ? "Cadastrar endereço" : userAdress}</AdressParagraph>
+                <ImgLocationButton src={location} />
+            </DivAdressConteiner>
             <Modal handleModal={handleModal} isOpen={isOpen}>
                 <DivContainer>
                     <Form index={index}>

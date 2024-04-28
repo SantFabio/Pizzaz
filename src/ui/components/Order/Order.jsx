@@ -16,14 +16,14 @@ import {
 } from "./Order.styled";
 import { removeItem } from "../../../data/actions/orderActions";
 
-const FullBag = ({ bagState }) => {
+const Order = () => {
   const dispatch = useDispatch();
-  const orderState = useSelector((state) => {
-    return state.orderState;
+  const { orderState } = useSelector((state) => {
+    return state;
   });
   const totalPrice =
-    orderState.length > 0
-      ? orderState
+    orderState.items.length > 0
+      ? orderState.items
         .map((item) => item.precoUnitario * item.quantidade)
         .reduce((accumulator, currentValue) => accumulator + currentValue)
       : 0;
@@ -33,7 +33,7 @@ const FullBag = ({ bagState }) => {
         <Title>Seu pedido:</Title>
         <HorizontalLine />
         <UlStyled>
-          {bagState.map((item, index) => (
+          {orderState.items.map((item, index) => (
             <ListItem key={index}>
               <ProductName>{item.nomeProduto}</ProductName>
               <CounterButton item={item} dispatch={dispatch} />
@@ -61,4 +61,4 @@ const FullBag = ({ bagState }) => {
   );
 };
 
-export default FullBag;
+export default Order;
