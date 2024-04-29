@@ -33,7 +33,6 @@ const LocationAddressInput = () => {
     const [index, setIndex] = useState(true);
     // solicitação para saber se o usuario deseja usar a localização pelo dispositivo
     // const [userLocation, setUserLocation] = useState(null);
-    console.log(userAdress);
     const [coordinates, setCoordinates] = useState(
         {
             latitude: -1.302949,

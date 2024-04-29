@@ -15,7 +15,7 @@ const store = createStore(rootReducer, persistedState, applyMiddleware(thunk));
 // Salva o estado no armazenamento local sempre que ele mudar
 store.subscribe(() => {
   localStorage.setItem("reduxState", JSON.stringify(store.getState()));
-  console.log(persistedState);
+  console.log(store.getState());
 });
-
 export default store;
+

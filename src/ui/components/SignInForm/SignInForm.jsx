@@ -24,6 +24,7 @@ import {
 import { loginUser } from "../../../data/actions/authenticationActions";
 import { signInWithPassword, signInWithGoogle } from "../../../data/service/authService";
 import { getUserById } from "../../../data/service/userDataService";
+import { updateClient } from "../../../data/actions/orderActions";
 
 const SignInForm = () => {
   const [email, setEmail] = useState("");
@@ -62,8 +63,8 @@ const SignInForm = () => {
     e.preventDefault();
     try {
       let user = await signInWithGoogle();
-      console.log(await getUserById(user.uid))
-      console.log(user);
+      let userData = await getUserById(user.uid);
+      dispatch(updateClient(userData));
       dispatch(loginUser(user));
       setLoggedIn(!loggedIn);
     } catch (error) {

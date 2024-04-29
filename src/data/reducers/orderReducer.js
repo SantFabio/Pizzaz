@@ -1,78 +1,106 @@
 import * as TodoConstants from "../actions/orderActions";
 
 const initialState = {
-  items: [] // Estado inicial com a propriedade 'items' como um array vazio
+  client: {},
+  items: [],
+  status: "processing",
+  paymentMethod: "credit card",
+  total: 0, // Total do pedido
+  paymentStatus: "pending", // estatus do pagamento
+  deliveryMethod: "home delivery", // entrega a domicilio
+  deliveryInfo: {
+    address: "",
+    preferredTime: "",
+    specialInstructions: "",
+  },
+  customerNotes: "", // Customer notes
+  paymentDetails: {
+    cardNumber: "**** **** **** ****",
+    expirationDate: "",
+    securityCode: "",
+  },
 };
+const addItemReducer = (state, newItems) => {
+  const updatedItems = [...state.items];
+
+  // Itera sobre cada novo item
+  newItems.forEach(newItem => {
+    // Verifica se o item já existe no estado atual
+    const existingItemIndex = state.items.findIndex(item => item.produtoId === newItem.produtoId);
+
+    if (existingItemIndex !== -1) {
+      // Se o item já existe, atualiza a quantidade
+      updatedItems[existingItemIndex].quantidade += newItem.quantidade;
+    } else {
+      // Se o item não existe, adiciona-o à lista de itens
+      updatedItems.push(newItem);
+    }
+  });
+  // Retorna o novo estado
+  return {
+    ...state,
+    items: updatedItems,
+    total: calcTotal(updatedItems),
+  };
+};
+const calcTotal = (updatedItems) => {
+  // Verifica se o array de itens está vazio
+  if (updatedItems.length === 0) {
+    return 0; // Retorna 0 se o array estiver vazio
+  }
+
+  // Calcula o total normalmente se houver itens no array
+  const prices = updatedItems.map((item) => item.precoUnitario * item.quantidade);
+  const totalPrice = prices.reduce((accumulator, currentValue) => accumulator + currentValue);
+  return totalPrice;
+}
 
 const orderReducer = (state = initialState, action) => {
-  let newItems = null;
   switch (action.type) {
     case TodoConstants.ADD_ITEM:
-      newItems = action.payload;
-
-      // Para cada novo item no payload
-      newItems.forEach(newItem => {
-        // Verifica se o item já está no estado atual
-        const existingItemIndex = state.items.findIndex(item => item.produtoId === newItem.produtoId);
-
-        if (existingItemIndex !== -1) {
-          // Se o item já estiver no estado, aumenta a quantidade
-          state.items[existingItemIndex].quantidade += 1;
-        } else {
-          // Se o item não estiver no estado, adiciona-o
-          state.items.push(newItem);
-        }
-      });
-
-      // Retorna o novo estado
-      return { ...state };
+      return addItemReducer(state, action.payload);
     case TodoConstants.REMOVE_ITEM:
-      return { ...state, items: state.items.filter((item) => item.produtoId !== action.payload) };
-
+      return {
+        ...state,
+        items: state.items.filter((item) => item.produtoId !== action.payload),
+        total: calcTotal(state.items.filter((item) => item.produtoId !== action.payload))
+      };
     case TodoConstants.INCREASE_QUANTITY:
       return {
         ...state,
-        items: state.items.map((item) => {
-          if (item.produtoId === action.payload) {
-            return {
-              ...item,
-              quantidade: item.quantidade + 1
-            };
-          } else {
-            return item; // Retorna o item sem modificação se não for o item a ser atualizado
-          }
-        })
+        items: state.items.map((item) =>
+          item.produtoId === action.payload
+            ? { ...item, quantidade: item.quantidade + 1 }
+            : item
+        ),
+        total: calcTotal(state.items.map((item) =>
+          item.produtoId === action.payload
+            ? { ...item, quantidade: item.quantidade + 1 }
+            : item
+        )),
       };
     case TodoConstants.DECREASE_QUANTITY:
       return {
         ...state,
-        items: state.items.map((item) => {
-          if (item.produtoId === action.payload) {
-            return {
-              ...item,
-              quantidade: item.quantidade - 1
-            };
-          } else {
-            return item; // Retorna o item sem modificação se não for o item a ser atualizado
-          }
-        })
+        items: state.items.map((item) =>
+          item.produtoId === action.payload
+            ? { ...item, quantidade: Math.max(0, item.quantidade - 1) }
+            : item
+        ),
+        total: calcTotal(state.items.map((item) =>
+          item.produtoId === action.payload
+            ? { ...item, quantidade: Math.max(0, item.quantidade - 1) }
+            : item
+        )),
+      };
+    case TodoConstants.UPDATE_CLIENT:
+      return {
+        ...state,
+        client: action.payload,
       };
     default:
       return state;
   }
 };
+
 export default orderReducer;
-// const pedido1 = {
-//     id: "id_do_pedido_1", // ID do documento no Firestore (pode ser gerado automaticamente)
-//     cliente: {
-//       nome: "João",
-//       endereco: "Rua XYZ",
-//       telefone: "123456789"
-//     },
-//     items: [
-//       { produtoId: "id_da_pizza", quantidade: 1, precoUnitario: 25.00 },
-//       { produtoId: "id_da_bebida", quantidade: 2, precoUnitario: 5.00 }
-//     ],
-//     status: "em processamento",
-//     dataHora: new Date() // Timestamp representando a data e hora do pedido
-//   };

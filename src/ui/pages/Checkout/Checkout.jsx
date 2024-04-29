@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Order from '../../components/Order/Order';
 import {
     Container,
@@ -18,12 +18,23 @@ import {
 import ChoosePaymentMethod from '../../components/ChoosePaymentMethod/ChoosePaymentMethod';
 import Button from '../../components/Button/Button';
 import LocationAddressInput from '../../components/LocationAddressInput/LocationAddressInput';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 
 // Componente principal
 const Checkout = () => {
+    const { orderState } = useSelector((state) => (state));
     const [currentStep, setCurrentStep] = useState(1);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (orderState.items.length === 0) {
+            navigate("/menu");
+        }
+    }, [orderState.items, navigate]);
+
     // Função para avançar para a próxima etapa
     const nextStep = () => {
         setCurrentStep(currentStep + 1);
@@ -33,7 +44,9 @@ const Checkout = () => {
     const prevStep = () => {
         setCurrentStep(currentStep - 1);
     };
+    useEffect(() => {
 
+    })
     // Renderização condicional com base na etapa atual
     // Renderização condicional com base na etapa atual
     const renderStep = () => {
@@ -61,12 +74,12 @@ const Checkout = () => {
                 );
             case 3:
                 return (
-                    <div>
+                    <OrderSummary>
                         <h2>Step 3: Order Complete</h2>
                         {/* Conteúdo para a etapa 3 - Pedido completo */}
                         <p>Obrigado pelo seu pedido! Ele será enviado em breve.</p>
                         <button onClick={prevStep}>Back</button>
-                    </div>
+                    </OrderSummary>
                 );
             default:
                 return null;

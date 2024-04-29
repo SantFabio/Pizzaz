@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 20px;
-  background-color: bisque;
+  /* background-color: bisque; */
 `;
 
 export const PaymentMethodSelector = styled.nav`
@@ -30,7 +30,7 @@ export const Content = styled.div`
   border-top: none;
   width: 100%;
   height: 37.0rem;
-  background-color: aqua;
+  background-color: ${({ theme }) => (theme.color.hover)};
 `;
 
 

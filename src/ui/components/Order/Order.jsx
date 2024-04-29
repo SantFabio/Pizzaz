@@ -18,15 +18,7 @@ import { removeItem } from "../../../data/actions/orderActions";
 
 const Order = () => {
   const dispatch = useDispatch();
-  const { orderState } = useSelector((state) => {
-    return state;
-  });
-  const totalPrice =
-    orderState.items.length > 0
-      ? orderState.items
-        .map((item) => item.precoUnitario * item.quantidade)
-        .reduce((accumulator, currentValue) => accumulator + currentValue)
-      : 0;
+  const orderState = useSelector((state) => state.orderState);
   return (
     <FullBegDivContainer>
       <InnerContainer>
@@ -51,11 +43,11 @@ const Order = () => {
       </InnerContainer>
       <SubtotalContainer>
         <div>Subtotal</div>
-        <div>R$ {totalPrice},00</div>
+        <div>R$ {orderState.total},00</div>
       </SubtotalContainer>
       <TotalContainer>
         <span>Total</span>
-        <div>R$ {totalPrice},00</div>
+        <div>R$ {orderState.total},00</div>
       </TotalContainer>
     </FullBegDivContainer>
   );
