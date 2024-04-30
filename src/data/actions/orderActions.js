@@ -3,6 +3,8 @@ export const REMOVE_ITEM = "REMOVE_ITEM";
 export const INCREASE_QUANTITY = "INCREASE_QUANTITY";
 export const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 export const UPDATE_CLIENT = "UPDATE_CLIENT";
+export const RESET_CLIENT_STATE = "RESET_CLIENT_STATE";
+export const UPDATE_PAYMENT_METHOD = "UPDATE_PAYMENT_METHOD";
 
 export const addItem = (selectedPizza, selectedDrinks) => {
   return {
@@ -42,8 +44,15 @@ export const decreaseQuantity = (ID) => {
     payload: ID,
   }
 }
-
 export const updateClient = (clientData) => ({
   type: UPDATE_CLIENT,
   payload: clientData,
+});
+export const resetClientState = () => ({
+  type: RESET_CLIENT_STATE,
+  payload: {},
+});
+export const updatePaymenteMetod = (paymentMethod) => ({
+  type: UPDATE_PAYMENT_METHOD,
+  payload: paymentMethod,
 });

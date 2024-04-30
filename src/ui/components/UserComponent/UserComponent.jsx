@@ -23,6 +23,7 @@ import { logoutUser } from "../../../data/actions/authenticationActions";
 import { useState } from "react";
 import DivContainer from "../DivContainer/DivContainer";
 import LocationAddressInput from "../LocationAddressInput/LocationAddressInput";
+import { resetClientState } from "../../../data/actions/orderActions";
 
 const CLOSE = "close";
 
@@ -42,6 +43,7 @@ const UserComponent = () => {
     try {
       await userLogOut();
       dispatch(logoutUser());
+      dispatch(resetClientState());
       setIsOpen(!isOpen);
       navigate("/");
     } catch (error) {

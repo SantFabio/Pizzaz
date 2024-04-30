@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
     Container,
     PaymentMethodSelector,
@@ -8,9 +8,12 @@ import {
     Column,
 } from "./ChoosePaymentMethod.styled";
 import FormInput from '../FormInput/FormInput';
+import { useDispatch } from 'react-redux';
+import { updatePaymenteMetod } from '../../../data/actions/orderActions';
 
 const ChoosePaymentMethod = () => {
     const [selectedOption, setSelectedOption] = useState('creditCard');
+    const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         cardName: '',
         cardNumber: '',
@@ -30,6 +33,9 @@ const ChoosePaymentMethod = () => {
             [name]: value
         });
     };
+    useEffect(() => {
+        dispatch(updatePaymenteMetod(selectedOption));
+    }, [selectedOption, dispatch])
 
     return (
         <Container>

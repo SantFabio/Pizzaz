@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import Order from '../../components/Order/Order';
+import foodDelivery from "../../../assets/img/foodDelivery.svg"
 import {
     Container,
     Row,
@@ -14,12 +15,16 @@ import {
     StepDivider,
     H1Summary,
     Address,
+    FoodDeliveryImg,
+    H1OrderReceived,
+    H2OrderReceived,
 } from "./Checkout.styled"
 import ChoosePaymentMethod from '../../components/ChoosePaymentMethod/ChoosePaymentMethod';
 import Button from '../../components/Button/Button';
 import LocationAddressInput from '../../components/LocationAddressInput/LocationAddressInput';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { sendOrderToDataBase } from '../../../data/service/orderService';
 
 
 
@@ -39,7 +44,13 @@ const Checkout = () => {
     const nextStep = () => {
         setCurrentStep(currentStep + 1);
     };
-
+    const sendOrder = async () => {
+        try {
+            await sendOrderToDataBase(orderState);
+        } catch (error) {
+            console.log(error);
+        }
+    }
     // Função para retroceder para a etapa anterior
     const prevStep = () => {
         setCurrentStep(currentStep - 1);
@@ -75,10 +86,10 @@ const Checkout = () => {
             case 3:
                 return (
                     <OrderSummary>
-                        <h2>Step 3: Order Complete</h2>
-                        {/* Conteúdo para a etapa 3 - Pedido completo */}
-                        <p>Obrigado pelo seu pedido! Ele será enviado em breve.</p>
-                        <button onClick={prevStep}>Back</button>
+                        <FoodDeliveryImg src={foodDelivery} alt="moto" />
+                        <H1OrderReceived>Pedido Recebido</H1OrderReceived>
+                        <H2OrderReceived>Acompanhar pedido?</H2OrderReceived>
+                        <Button onClick={prevStep} width={"100%"} height={"4.5rem"}>Pedidos</Button>
                     </OrderSummary>
                 );
             default:

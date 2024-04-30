@@ -100,3 +100,19 @@ export const Address = styled.div`
  margin-bottom: 1.0rem;
  border-radius: 0.5rem;
 `;
+export const FoodDeliveryImg = styled.img`
+  width: 100%;
+`;
+export const H1OrderReceived = styled.h1`
+  text-align: center;
+  font-size: ${({ theme }) => (theme.font.xx)};
+  color: ${({ theme }) => (theme.color.black)};
+  margin-bottom: 2.0rem;
+  `;
+export const H2OrderReceived = styled.h2`
+font-size: ${({ theme }) => (theme.font.lg)};
+color: ${({ theme }) => (theme.color.black)};
+text-align: center;
+margin-bottom: 2.0rem;
+
+`;

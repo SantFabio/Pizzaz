@@ -9,12 +9,13 @@ import DivContainer from "../DivContainer/DivContainer";
 import Button from "../Button/Button";
 
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const CLOSE = "close";
 
 const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
-  const { orderState } = useSelector((state) => {
+  const navigate = useNavigate();
+  const { orderState, userState } = useSelector((state) => {
     return state;
   });
 
@@ -22,6 +23,9 @@ const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
     const closeContainer = event.target.className;
     if (closeContainer.includes(CLOSE)) {
       setIsOpen(!isOpen);
+      if (!userState.isLoggedIn) {
+        navigate("/auth/")
+      }
     }
   };
 

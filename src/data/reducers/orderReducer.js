@@ -4,20 +4,19 @@ const initialState = {
   client: {},
   items: [],
   status: "processing",
-  paymentMethod: "credit card",
+  paymentMethod: "",
   total: 0, // Total do pedido
   paymentStatus: "pending", // estatus do pagamento
   deliveryMethod: "home delivery", // entrega a domicilio
   deliveryInfo: {
-    address: "",
-    preferredTime: "",
-    specialInstructions: "",
+    address: {},
   },
   customerNotes: "", // Customer notes
   paymentDetails: {
-    cardNumber: "**** **** **** ****",
+    cardNumber: "",
     expirationDate: "",
     securityCode: "",
+    pixKey: "",
   },
 };
 const addItemReducer = (state, newItems) => {
@@ -97,6 +96,22 @@ const orderReducer = (state = initialState, action) => {
       return {
         ...state,
         client: action.payload,
+        deliveryInfo: {
+          address: action.payload.address,
+        }
+      };
+    case TodoConstants.RESET_CLIENT_STATE:
+      return {
+        ...state,
+        client: action.payload,
+        deliveryInfo: {
+          address: action.payload,
+        }
+      };
+    case TodoConstants.UPDATE_PAYMENT_METHOD:
+      return {
+        ...state,
+        paymentMethod: action.payload,
       };
     default:
       return state;

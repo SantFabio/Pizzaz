@@ -8,12 +8,15 @@ import getPizzas from "../src/data/service/pizzasService";
 import OrderSidebar from "./ui/components/OrderSidebar/OrderSidebar";
 import AuthPage from "./ui/pages/auth/AuthPage";
 import Checkout from "./ui/pages/Checkout/Checkout";
-import { useSelector } from "react-redux";
-// import { checkUserAuthentication } from "./data/service/authService";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById } from "./data/service/userDataService";
+import { updateClient } from "./data/actions/orderActions";
+import { checkUserAuthentication } from "./data/service/authService";
 
 function App() {
   const [pizzas, setPizzas] = useState([]);
   const [isOpen, setIsOpen] = useState(false); //isOpen do carrinho
+  const dispatch = useDispatch();
   const { userState } = useSelector((state) => {
     return state;
   });
@@ -24,28 +27,29 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  // useEffect(() => {
-  //   const verificarAutenticacaoDoUsuario = async () => {
-  //     try {
-  //       const user = await checkUserAuthentication();
-  //       // if (user) {
-  //       //   console.log("Usuário logado:", user);
-  //       // } else {
-  //       //   console.log("Nenhum usuário logado.");
-  //       // }
-  //     } catch (error) {
-  //       console.error("Erro ao verificar autenticação do usuário:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const verificarAutenticacaoDoUsuario = async () => {
+      try {
+        const user = await checkUserAuthentication();
+        if (user) {
+          let userData = await getUserById(user.uid);
+          dispatch(updateClient(userData));
+        } else {
+          console.log("Nenhum usuário logado.");
+        }
+      } catch (error) {
+        console.error("Erro ao verificar autenticação do usuário:", error);
+      }
+    };
 
-  //   // Chame a função para verificar a autenticação do usuário
-  //   verificarAutenticacaoDoUsuario();
+    // Chame a função para verificar a autenticação do usuário
+    verificarAutenticacaoDoUsuario();
 
-  //   // Lembre-se de retornar uma função de limpeza se necessário
-  //   return () => {
-  //     // Código de limpeza, se necessário
-  //   };
-  // }, []);
+    // Lembre-se de retornar uma função de limpeza se necessário
+    return () => {
+      // Código de limpeza, se necessário
+    };
+  }, [dispatch]);
 
   return (
     <>
