@@ -1,20 +1,20 @@
 import DrinksCards from "../DrinksCard/DrinksCard";
 import {
-  PizzaModalStyled,
-  PizzaContainer,
   ImgStyled,
   OrderStyled,
   PizzaInformation,
   UlStyled,
   H1Style,
   DescStyled,
-} from "./PizzaModal.styled";
+} from "./PizzaDetails.styled";
+import Button from "../Button/Button";
 import { useEffect, useState } from "react";
 import getDrinks from "../../../data/service/drinksService";
 import { addItem } from "../../../data/actions/orderActions";
 import { useDispatch } from "react-redux";
+import Modal from "../Modal/Modal";
 
-const PizzaModal = ({ pizzaInFocus, setIsOpenPizzaModal, setIsOpen }) => {
+const PizzaDetails = ({ pizzaInFocus, setIsOpenPizzaModal, setIsOpen }) => {
   const [drinks, setDrinks] = useState([]);
   const dispatch = useDispatch();
 
@@ -40,25 +40,23 @@ const PizzaModal = ({ pizzaInFocus, setIsOpenPizzaModal, setIsOpen }) => {
 
   return (
     <>
-      <PizzaModalStyled id="modal" onClick={handleCloseModal}>
-        <PizzaContainer>
-          <ImgStyled src={pizzaInFocus.image} alt={pizzaInFocus.nome} />
-          <OrderStyled>
-            <H1Style>{pizzaInFocus.nome}</H1Style>
-            <PizzaInformation>
-              <DescStyled>{pizzaInFocus.descricao}</DescStyled>
-              <UlStyled>
-                {drinks.map((drink) => (
-                  <DrinksCards key={drink.id} drink={drink}></DrinksCards>
-                ))}
-              </UlStyled>
-            </PizzaInformation>
-            <button onClick={addItemToBag}>Adicionar</button>
-            <span>*escolha a quantidade no carrinho</span>
-          </OrderStyled>
-        </PizzaContainer>
-      </PizzaModalStyled>
+      <Modal id="modal" isOpen={setIsOpen} handleModal={handleCloseModal}>
+        <ImgStyled src={pizzaInFocus.image} alt={pizzaInFocus.nome} />
+        <OrderStyled>
+          <H1Style>{pizzaInFocus.nome}</H1Style>
+          <PizzaInformation>
+            <DescStyled>{pizzaInFocus.descricao}</DescStyled>
+            <UlStyled>
+              {drinks.map((drink) => (
+                <DrinksCards key={drink.id} drink={drink}></DrinksCards>
+              ))}
+            </UlStyled>
+          </PizzaInformation>
+          <Button width={"100%"} height={"4.5rem"} onClick={addItemToBag}>Adicionar</Button>
+          <span>*escolha a quantidade no carrinho</span>
+        </OrderStyled>
+      </Modal>
     </>
   );
 };
-export default PizzaModal;
+export default PizzaDetails;

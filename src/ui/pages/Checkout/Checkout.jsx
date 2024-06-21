@@ -79,7 +79,7 @@ const Checkout = () => {
                     <>
                         <OrderSummary>
                             <ChoosePaymentMethod></ChoosePaymentMethod>
-                            <Button onClick={nextStep} width={"100%"} height={"4.5rem"}>Finalizar pedido</Button>
+                            <Button onClick={sendOrder} width={"100%"} height={"4.5rem"}>Finalizar pedido</Button>
                         </OrderSummary>
                     </>
                 );

@@ -42,12 +42,10 @@ function App() {
       }
     };
 
-    // Chame a função para verificar a autenticação do usuário
     verificarAutenticacaoDoUsuario();
 
-    // Lembre-se de retornar uma função de limpeza se necessário
     return () => {
-      // Código de limpeza, se necessário
+
     };
   }, [dispatch]);
 

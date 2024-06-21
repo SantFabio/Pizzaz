@@ -7,7 +7,7 @@ import {
 } from "./Menu.styled";
 import Dropdown from "../../components/Dropdown/Dropdown";
 import { useState } from "react";
-import PizzaModal from "../../components/PizzaModal/PizzaModal";
+import PizzaDetails from "../../components/PizzaDetails/PizzaDetails";
 
 const Menu = ({ pizzas, setIsOpen }) => {
     const [isOpenPizzaModal, setIsOpenPizzaModal] = useState(false);
@@ -34,7 +34,7 @@ const Menu = ({ pizzas, setIsOpen }) => {
                     </UlStyled>
                 </div>
                 {
-                    isOpenPizzaModal ? <PizzaModal
+                    isOpenPizzaModal ? <PizzaDetails
                         pizzaInFocus={pizzaInFocus}
                         setIsOpenPizzaModal={setIsOpenPizzaModal}
                         setIsOpen={setIsOpen}

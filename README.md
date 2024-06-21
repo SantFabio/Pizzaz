@@ -9,8 +9,8 @@ Currently, two official plugins are available:
 
 chave de api do google maps: AIzaSyCbaI2f4Fpaeq0DpMq9ZG0fVntdW2K5UOw
 
-tecs
-    Router
+techs
+    React-Router
     Styled-components
     Firebase
     Redux 
@@ -26,9 +26,9 @@ Com certeza, Fábio! Para o seu site de pizzaria, sugiro algumas telas essenciai
 5. **Autenticação/Cadastro:** Para os clientes se registrarem ou fazerem login. ✅
 6. **Histórico de Pedidos:** Onde os clientes podem visualizar pedidos anteriores.
 7. **Página do Perfil:** Permitindo a edição das informações do cliente.
-8. **Página de Confirmação:** Após efetuar o pedido, uma confirmação clara.
+8. **Página de Confirmação:** Após efetuar o pedido, uma confirmação clara. ✅
 9. **Rastreamento de Pedido:** Opcional, mas interessante para pedidos online.
-10. **Página de Contato:** Informações de contato e formulário para dúvidas.
+10. **Página de Contato:** Informações de contato e formulário para dúvidas. ✅
 
 
 Funcionalidades Principais:
