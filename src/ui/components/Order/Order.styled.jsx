@@ -3,15 +3,15 @@ import styled from "styled-components";
 export const FullBegDivContainer = styled.div`
   width: 100%;
   height: 100%;
-  /* background-color: bisque; */
   display: flex;
   flex-direction: column;
+  /* background-color: bisque; */
 `;
 
 export const InnerContainer = styled.div`
   width: 100%;
   height: 90%;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   /* background-color: aquamarine; */
   `;
 export const Title = styled.div`
@@ -32,23 +32,25 @@ export const UlStyled = styled.ul`
 export const ListItem = styled.li`
   /* background-color: chocolate; */
   display: grid;
-  grid-template-columns: 70% 30%; 
+  grid-template-columns: auto auto; 
   grid-template-rows: auto auto; 
-  column-gap : 2.0rem;
   row-gap : 0.5rem;
   margin-bottom: 0.5rem;
-  padding: 1.0rem;
+  justify-content: space-between;
 `;
 
 export const ProductName = styled.h1`
   /* background-color: coral; */
   align-self: center;
+  width: 100%;
 `;
 
 export const ProductDescription = styled.p`
+  /* width: 100%; */
   white-space: nowrap; /* Impede a quebra de texto em várias linhas */
   overflow: hidden; /* Esconde o texto que exceder o tamanho da linha */
   text-overflow: ellipsis; /* Exibe "..." quando o texto exceder o tamanho da linha */
+  /* background-color: aquamarine; */
 `;
 
 
@@ -63,6 +65,7 @@ export const RemoveButton = styled.button`
   border: 0.1rem solid ${({ theme }) => theme.color.hover};
   border-radius: 5px;
   font-size: ${({ theme }) => theme.font.md};
+  /* background-color: blue; */
   `;
 
 export const SubtotalContainer = styled.span`

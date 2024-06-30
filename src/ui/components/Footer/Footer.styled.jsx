@@ -20,25 +20,28 @@ export const ContentStyled = styled.div`
         margin-bottom: 2.0rem;
     }
     `;
-export const NewsLetter = styled.div`
+export const News = styled.div`
     grid-area: newsLetter;
-
-`;
+    padding: 0 5.0rem 0 2.0rem;
+    /* background-color: aquamarine; */
+    `;
 export const Contact = styled.div`
     grid-area: contact;
     /* background-color: bisque; */
-`;
+    `;
 export const Informations = styled.div`
     grid-area: information;
     /* background-color: blue; */
-`;
+    `;
 export const LogoStyled = styled.div`
     grid-area: logo;
-`;
+    `;
 export const FooterLogo = styled.div`
     transform: translateX(-50px);
     width: 50.0rem;
-`;
+    /* background-color: blanchedalmond; */
+    padding: 0 5.0rem 0 5.0rem;
+    `;
 
 export const SocialMedias = styled.div`
     /* background-color: darkgreen; */

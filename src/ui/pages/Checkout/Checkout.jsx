@@ -67,7 +67,7 @@ const Checkout = () => {
                     <OrderSummary>
                         <H1Summary>Resumo do Pedido</H1Summary>
                         <Address>
-                            <h2>Endereço de entraga:</h2>
+                            <h2>Endereço de entrega:</h2>
                             <LocationAddressInput></LocationAddressInput>
                         </Address>
                         <Order />
@@ -103,8 +103,8 @@ const Checkout = () => {
             <CheckoutProgress >
                 <UlProgressCheckout>
                     <ProgressStep className={currentStep === 1 ? 'cart' : ''}>
-                        <CircleStep onClick={currentStep === 2 ? prevStep : ""}>1
-                            <StepDivider />
+                        <CircleStep onClick={currentStep === 2 ? prevStep : ""} className={currentStep === 1 ? 'done' : ''}>1
+                            <StepDivider currentStep={currentStep} />
                         </CircleStep>
                         Sacola de Compras
                     </ProgressStep>
@@ -112,14 +112,14 @@ const Checkout = () => {
                         <StepMarker></StepMarker>
                     </ProgressIndicator> */}
                     <ProgressStep className={currentStep === 2 ? 'checkout' : ''}>
-                        <CircleStep>2</CircleStep>
+                        <CircleStep className={currentStep === 2 ? 'done' : ''}>2</CircleStep>
                         Checkout
                     </ProgressStep>
                     {/* <ProgressIndicator2>
                         <StepMarker></StepMarker>
                     </ProgressIndicator2> */}
                     <ProgressStep className={currentStep === 3 ? 'complete' : ''}>
-                        <CircleStep>3</CircleStep>
+                        <CircleStep className={currentStep === 3 ? 'done' : ''}>3</CircleStep>
                         Pedido Feito
                     </ProgressStep>
                 </UlProgressCheckout>
