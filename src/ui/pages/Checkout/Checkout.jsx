@@ -22,9 +22,10 @@ import {
 import ChoosePaymentMethod from '../../components/ChoosePaymentMethod/ChoosePaymentMethod';
 import Button from '../../components/Button/Button';
 import LocationAddressInput from '../../components/LocationAddressInput/LocationAddressInput';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { sendOrderToDataBase } from '../../../data/service/orderService';
+import { resetOrder } from '../../../data/actions/orderActions';
 
 
 
@@ -33,6 +34,11 @@ const Checkout = () => {
     const { orderState } = useSelector((state) => (state));
     const [currentStep, setCurrentStep] = useState(1);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const resetOrderState = () => {
+        dispatch(resetOrder());
+    };
 
     useEffect(() => {
         if (orderState.items.length === 0) {
@@ -49,6 +55,7 @@ const Checkout = () => {
             const docID = await sendOrderToDataBase(orderState);
             if (docID) {
                 nextStep();
+                resetOrderState();
             } else {
                 console.error('Erro ao enviar o pedido: ID do documento não retornado.');
             }

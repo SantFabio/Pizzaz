@@ -12,7 +12,7 @@ const initialState = {
     address: {},
   },
   customerNotes: "", // Customer notes
-  paymentDetails: {
+  paymentDetails: { //método de pagamento 
     cardNumber: "",
     expirationDate: "",
     securityCode: "",
@@ -112,6 +112,27 @@ const orderReducer = (state = initialState, action) => {
       return {
         ...state,
         paymentMethod: action.payload,
+      };
+    case TodoConstants.RESET_ORDER:
+      return {
+        ...state,
+        items: [],
+        status: "processing",
+        paymentMethod: "",
+        total: 0,
+        paymentStatus: "pending",
+        deliveryMethod: "home delivery",
+        deliveryInfo: {
+          ...state.deliveryInfo,
+          address: {},
+        },
+        customerNotes: "",
+        paymentDetails: {
+          cardNumber: "",
+          expirationDate: "",
+          securityCode: "",
+          pixKey: "",
+        },
       };
     default:
       return state;

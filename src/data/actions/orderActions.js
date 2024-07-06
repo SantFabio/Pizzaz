@@ -5,6 +5,7 @@ export const DECREASE_QUANTITY = "DECREASE_QUANTITY";
 export const UPDATE_CLIENT = "UPDATE_CLIENT";
 export const RESET_CLIENT_STATE = "RESET_CLIENT_STATE";
 export const UPDATE_PAYMENT_METHOD = "UPDATE_PAYMENT_METHOD";
+export const RESET_ORDER = "RESET_ORDER";
 
 export const addItem = (selectedPizza, selectedDrinks) => {
   return {
@@ -56,3 +57,8 @@ export const updatePaymenteMetod = (paymentMethod) => ({
   type: UPDATE_PAYMENT_METHOD,
   payload: paymentMethod,
 });
+export const resetOrder = () => {
+  return {
+    type: RESET_ORDER,
+  };
+};
