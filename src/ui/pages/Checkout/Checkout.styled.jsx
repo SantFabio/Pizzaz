@@ -1,7 +1,7 @@
 import styled from "styled-components";
+
 // Estilos dos componentes usando styled-components
 export const Container = styled.div`
-  font-family: Arial;
   font-size: 17px;
   padding: 8px;
 `;
@@ -9,7 +9,8 @@ export const Container = styled.div`
 export const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -16px;
+  /* background-color: yellow; */
+  /* margin: 0 -16px; */
   `;
 
 export const Column = styled.div`
@@ -94,7 +95,7 @@ export const StepDivider = styled.span`
   };
   height: 5px;
   display: block;
-  background-color: #633ff5;
+  background-color: ${({ theme }) => (theme.color.third)};
   position: absolute;
 /* top: 50%; */
   left: 0;

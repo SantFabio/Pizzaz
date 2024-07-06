@@ -1,11 +1,10 @@
-import { doc, setDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import { db } from './firebase'; // Supondo que você já tenha configurado a conexão com o Firestore
 
 export const sendOrderToDataBase = async (pedido) => {
     try {
         // Adiciona um novo documento com um ID automático à coleção "pedidos"
-        const docRef = doc(db, 'pedidos');
-        await setDoc(docRef, pedido);
+        const docRef = await addDoc(collection(db, 'pedidos'), pedido);
 
         // Retorna o ID do documento adicionado
         return docRef.id;

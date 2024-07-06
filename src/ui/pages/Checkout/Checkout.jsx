@@ -46,7 +46,12 @@ const Checkout = () => {
     };
     const sendOrder = async () => {
         try {
-            await sendOrderToDataBase(orderState);
+            const docID = await sendOrderToDataBase(orderState);
+            if (docID) {
+                nextStep();
+            } else {
+                console.error('Erro ao enviar o pedido: ID do documento não retornado.');
+            }
         } catch (error) {
             console.log(error);
         }
@@ -55,9 +60,6 @@ const Checkout = () => {
     const prevStep = () => {
         setCurrentStep(currentStep - 1);
     };
-    useEffect(() => {
-
-    })
     // Renderização condicional com base na etapa atual
     // Renderização condicional com base na etapa atual
     const renderStep = () => {
@@ -103,7 +105,8 @@ const Checkout = () => {
             <CheckoutProgress >
                 <UlProgressCheckout>
                     <ProgressStep className={currentStep === 1 ? 'cart' : ''}>
-                        <CircleStep onClick={currentStep === 2 ? prevStep : ""} className={currentStep === 1 ? 'done' : ''}>1
+                        <CircleStep onClick={currentStep === 2 ? prevStep : ""}
+                            className={currentStep >= 1 ? 'done' : ''}>1
                             <StepDivider currentStep={currentStep} />
                         </CircleStep>
                         Sacola de Compras
@@ -112,14 +115,14 @@ const Checkout = () => {
                         <StepMarker></StepMarker>
                     </ProgressIndicator> */}
                     <ProgressStep className={currentStep === 2 ? 'checkout' : ''}>
-                        <CircleStep className={currentStep === 2 ? 'done' : ''}>2</CircleStep>
+                        <CircleStep className={currentStep >= 2 ? 'done' : ''}>2</CircleStep>
                         Checkout
                     </ProgressStep>
                     {/* <ProgressIndicator2>
                         <StepMarker></StepMarker>
                     </ProgressIndicator2> */}
                     <ProgressStep className={currentStep === 3 ? 'complete' : ''}>
-                        <CircleStep className={currentStep === 3 ? 'done' : ''}>3</CircleStep>
+                        <CircleStep className={currentStep >= 3 ? 'done' : ''}>3</CircleStep>
                         Pedido Feito
                     </ProgressStep>
                 </UlProgressCheckout>
