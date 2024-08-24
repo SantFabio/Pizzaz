@@ -9,13 +9,13 @@ import DivContainer from "../DivContainer/DivContainer";
 import Button from "../Button/Button";
 
 import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CLOSE = "close";
 
 const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
-  const navigate = useNavigate();
-  const { orderState, userState } = useSelector((state) => {
+  // const navigate = useNavigate();
+  const { orderState } = useSelector((state) => {
     return state;
   });
 
@@ -23,11 +23,15 @@ const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
     const closeContainer = event.target.className;
     if (closeContainer.includes(CLOSE)) {
       setIsOpen(!isOpen);
-      if (!userState.isLoggedIn) {
-        navigate("/auth/")
-      }
     }
   };
+  // const handleCheckoutClick = () => {
+  //   if (!userState.isLoggedIn) {
+  //     navigate("/auth/")
+  //   } else {
+  //     navigate("/checkout")
+  //   }
+  // }
 
   return (
     <>
@@ -42,7 +46,7 @@ const Sidebar = ({ pizzas, setPizzas, isOpen, setIsOpen }) => {
           {orderState.items.length ? <Order pizzas={pizzas} setPizzas={setPizzas} /> : <EmptyBag isOpen={isOpen} />}
           {orderState.items.length ?
             <Link to={"/checkout"}>
-              <Button className={CLOSE} width="100%" height="5.0rem" onClick={handleClick}>
+              <Button className={CLOSE} width="100%" height="5.0rem" >
                 Escolher forma de pagamento
               </Button>
             </Link>

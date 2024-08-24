@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FullBegDivContainer = styled.div`
   width: 100%;
-  height: 100%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   /* background-color: bisque; */
@@ -11,7 +11,7 @@ export const FullBegDivContainer = styled.div`
 export const InnerContainer = styled.div`
   width: 100%;
   height: 90%;
-  /* overflow-y: scroll; */
+  overflow-y: auto;
   /* background-color: aquamarine; */
   `;
 export const Title = styled.div`
@@ -25,7 +25,7 @@ export const HorizontalLine = styled.hr`
   `;
 export const UlStyled = styled.ul`
   li:not(:last-child) {
-    border-bottom: 1px solid red; 
+    border-bottom: 1px solid ${({ theme }) => theme.color.third}; 
   }
   /* background-color: aquamarine; */
   `;

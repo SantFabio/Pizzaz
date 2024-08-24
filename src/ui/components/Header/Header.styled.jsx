@@ -6,14 +6,17 @@ export const HeaderStyled = styled.header`
   left: 0;
   z-index: 1000;
   
-  background-color: ${({ theme }) => theme.color.primary};
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${({ location }) =>
+    (location === '/checkout' ? "center" : "space-between")
+  };
+
   height: 7.0rem;
   width: 100%;
-  border-bottom: 1px solid ${({ theme }) => theme.color.normal};
+  background-color: ${({ theme }) => theme.color.primary};
+  border-bottom: 1px solid ${({ theme }) => theme.color.third};
   padding: 0 2.5rem 0 2.5rem;
 `;
 

@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import emailIcon from "../../../assets/img/emailIcon.svg";
 import passwordIcon from "../../../assets/img/password.svg";
 import googleIcon from "../../../assets/img/googleIcon.svg";
-import apple from "../../../assets/img/appleIcon.svg";
+// import apple from "../../../assets/img/appleIcon.svg";
 import Button from "../../components/Button/Button";
 
 import {
@@ -132,10 +132,10 @@ const SignInForm = () => {
           <img src={googleIcon} alt="icone do google" />
           Google
         </ButtonSubmit>
-        <ButtonSubmit>
+        {/* <ButtonSubmit>
           <img src={apple} alt="icone da apple" />
           Apple
-        </ButtonSubmit>
+        </ButtonSubmit> */}
       </FlexRow>
     </Form>
   );

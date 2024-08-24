@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const AuthPageDivContainer = styled.div`
   width: 100%;
-  height: 99vh;
+  height: 100dvh;
   background-color: ${({ theme }) => theme.color.primary};
   position: absolute;
   top: 0;
@@ -10,6 +10,7 @@ export const AuthPageDivContainer = styled.div`
   display: grid;
   grid-template: 70% 30%;
   grid-template-areas: "logodiv divInnerContainer";
+  margin-bottom: -10px;
 `;
 export const DivInnerContainer = styled.div`
   align-self: center;
@@ -26,4 +27,6 @@ export const DivInnerContainer = styled.div`
 `;
 export const LogoDiv = styled.div`
   grid-area: logodiv;
+  height: 90%;
+  align-self: center;
 `;

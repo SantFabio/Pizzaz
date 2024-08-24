@@ -7,7 +7,7 @@ import {
   BagItems,
 } from "./Header.styled";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { checkUserAuthentication } from "../../../data/service/authService";
 // import InputMain from "../InputMain/InputMain";
 import logo from "../../../assets/img/logo.svg";
@@ -21,6 +21,7 @@ import UserComponent from "../UserComponent/UserComponent";
 // import searchIcon from "../../../assets/img/search-icon.svg";
 // import OrderSidebar from "../OrderSidebar/OrderSidebar";
 const Header = ({ isOpen, setIsOpen }) => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -49,7 +50,7 @@ const Header = ({ isOpen, setIsOpen }) => {
 
   return (
     <>
-      <HeaderStyled>
+      <HeaderStyled location={location.pathname}>
         <Link to={"/"}>
           <LogoImg src={logo} alt="logo" />
         </Link>
@@ -60,20 +61,21 @@ const Header = ({ isOpen, setIsOpen }) => {
           </div>
           <input type="text" />
         </InputMain> */}
-
-        <EnterContainer>
-          <UserComponent isOpen={isOpen} userState={userState} />
-          <BagContainer onClick={toggleSidebar}>
-            <BagItems>
-              <span>
-                R$ {orderState.total}
-                ,00
-              </span>
-              <span>{orderState.items ? orderState.items.length : 0} itens</span>
-            </BagItems>
-            <BagImg src={bag} alt="bag" />
-          </BagContainer>
-        </EnterContainer>
+        {location.pathname === '/checkout' ? "" :
+          <EnterContainer>
+            <UserComponent isOpen={isOpen} userState={userState} />
+            <BagContainer onClick={toggleSidebar}>
+              <BagItems>
+                <span>
+                  R$ {orderState.total}
+                  ,00
+                </span>
+                <span>{orderState.items ? orderState.items.length : 0} itens</span>
+              </BagItems>
+              <BagImg src={bag} alt="bag" />
+            </BagContainer>
+          </EnterContainer>
+        }
       </HeaderStyled>
     </>
   );

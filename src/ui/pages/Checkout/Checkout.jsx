@@ -23,28 +23,33 @@ import ChoosePaymentMethod from '../../components/ChoosePaymentMethod/ChoosePaym
 import Button from '../../components/Button/Button';
 import LocationAddressInput from '../../components/LocationAddressInput/LocationAddressInput';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { sendOrderToDataBase } from '../../../data/service/orderService';
 import { resetOrder } from '../../../data/actions/orderActions';
+import { useNavigate } from 'react-router-dom';
 
 
 
 // Componente principal
 const Checkout = () => {
-    const { orderState } = useSelector((state) => (state));
-    const [currentStep, setCurrentStep] = useState(1);
-    const navigate = useNavigate();
+    const { orderState, userState } = useSelector((state) => {
+        return state;
+    }); const [currentStep, setCurrentStep] = useState(1);
+    // const navigate = useNavigate();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const resetOrderState = () => {
         dispatch(resetOrder());
     };
 
     useEffect(() => {
-        if (orderState.items.length === 0) {
-            navigate("/menu");
+        if (!userState.isLoggedIn) {
+            navigate("/auth/")
+        } else {
+            navigate("/checkout")
         }
-    }, [orderState.items, navigate]);
+    }, [userState, navigate]);
 
     // Função para avançar para a próxima etapa
     const nextStep = () => {
@@ -65,7 +70,9 @@ const Checkout = () => {
     }
     // Função para retroceder para a etapa anterior
     const prevStep = () => {
-        setCurrentStep(currentStep - 1);
+        if (currentStep != 3) {
+            setCurrentStep(currentStep - 1);
+        }
     };
     // Renderização condicional com base na etapa atual
     // Renderização condicional com base na etapa atual

@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import Cards from "../../components/Cards/Cards";
 import {
     HrStyled,
@@ -6,8 +6,8 @@ import {
     UlStyled
 } from "./Menu.styled";
 import Dropdown from "../../components/Dropdown/Dropdown";
-import { useState } from "react";
 import PizzaDetails from "../../components/PizzaDetails/PizzaDetails";
+import { CardSkeleton } from "../../components/CardSkeleton/CardSkeleton";
 
 const Menu = ({ pizzas, setIsOpen }) => {
     const [isOpenPizzaModal, setIsOpenPizzaModal] = useState(false);
@@ -22,13 +22,14 @@ const Menu = ({ pizzas, setIsOpen }) => {
                     <UlStyled>
                         {pizzas.map(
                             (pizza) => (
-                                <Cards
-                                    pizza={pizza}
-                                    key={pizza.id}
-                                    setIsOpenPizzaModal={setIsOpenPizzaModal}
-                                    setPizzaInFocus={setPizzaInFocus}
-                                >
-                                </Cards>
+                                // <Cards
+                                //     pizza={pizza}
+                                //     key={pizza.id}
+                                //     setIsOpenPizzaModal={setIsOpenPizzaModal}
+                                //     setPizzaInFocus={setPizzaInFocus}
+                                // >
+                                // </Cards>
+                                <CardSkeleton key={pizza.id} />
                             )
                         )}
                     </UlStyled>
