@@ -6,6 +6,8 @@ const Cards = ({ pizza, setIsOpenPizzaModal, setPizzaInFocus }) => {
         setIsOpenPizzaModal(true);
         setPizzaInFocus(pizza);
     }
+    console.log(pizza.image);
+
     return (
         <>
             <CardStyled onClick={handleClick}>

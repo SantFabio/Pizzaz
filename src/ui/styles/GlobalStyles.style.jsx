@@ -10,7 +10,6 @@ const GlobalStyles = createGlobalStyle`
         list-style-type: none;
         text-decoration: none;
         user-select: none;
-        /* Para navegadores baseados em WebKit, como Chrome e Safari */
     ::-webkit-scrollbar {
         width: ${({ theme }) => theme.font.md}; /* Largura da barra de rolagem */
         height: ${({ theme }) => theme.font.md};/* Altura da barra de rolagem horizontal*/
@@ -40,6 +39,7 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         padding-top: 7.0rem;
+        /* width: 100dvw; */
     }
     :root{
         font-size:  62.5%; //0.1rem = 1px;

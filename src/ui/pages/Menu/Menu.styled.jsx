@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const MenuStyled = styled.main`
     display: flex;
+    /* width: 100dvw; */
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100%;
+    align-items: center; 
+    /* height: 100%; */
 `;
 
 export const UlStyled = styled.ul`

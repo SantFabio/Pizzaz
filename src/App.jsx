@@ -14,13 +14,12 @@ import { updateClient } from "./data/actions/orderActions";
 import { checkUserAuthentication } from "./data/service/authService";
 
 function App() {
-  const [pizzas, setPizzas] = useState([]);
+  const [pizzas, setPizzas] = useState(null);
   const [isOpen, setIsOpen] = useState(false); //isOpen do carrinho
   const dispatch = useDispatch();
   const { userState } = useSelector((state) => {
     return state;
   });
-
   useEffect(() => {
     const unsubscribe = getPizzas(setPizzas);
     // Limpar a inscrição quando o componente for desmontado
